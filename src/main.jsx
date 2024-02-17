@@ -12,7 +12,6 @@ import Test from './components/Test/Test';
 // import Root from './components/Root/Root';
 import Registration from './components/Registration/Registration';
 const router = createBrowserRouter([
-
       {
         path:'/',
         element: <Registration></Registration>
