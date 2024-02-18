@@ -32,11 +32,11 @@ const Registration = () => {
     return (
         <div className="reg-bg  min-h-screen  ">
             <div className="md:p-20  ">
-                <div className="p-5 bg-slate-300 bg-opacity-60 max-w-lg mx-auto rounded-xl ">
+                <div className="p-5 md:backdrop-blur-sm md:shadow-sm md:shadow-slate-400  max-w-lg mx-auto rounded-xl ">
                     <div className="text-center mb-3 ">
-                        <h2 className="text-3xl text-center font-bold mb-8 text-white md:text-black">Welcome to MRT Pass System</h2>
+                        <h2 className="text-3xl text-center font-bold mb-8 text-white ">Welcome to MRT Pass System</h2>
                         <img className="w-24 mx-auto mb-3" src={metro_img} alt="" />
-                        <p className="text-white md:text-black">Dont have an account? Plese register here</p>
+                        <p className="text-white">Dont have an account? Plese register here</p>
                     </div>
                     <form className="max-w-80 mx-auto ">
                         <label onChange={handleEmailChange} className="input input-bordered flex items-center gap-2  mb-2 rounded-3xl">

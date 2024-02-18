@@ -9,3 +9,31 @@
     background-size: cover;
     box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.6);
 }
+
+.login-bg{
+    background-image: url('./assets/login_bg.jpg');
+    background-size:cover;
+    background-repeat: repeat;
+    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.3);
+}
+
+.glow {
+    
+    color: #fff;
+    text-align: center;
+    color: #fff; /* Set the text color */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), /* Adjust the shadow color and size */
+               0 0 5px rgba(255, 255, 255, 0.8),
+               0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  
+  /* @keyframes glow {
+    from {
+      text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #19029e, 0 0 5px #0073e6, 0 0 6px #09306e, 0 0 7px #180669, 0 0 10px #0e1492;
+    }
+    to {
+      text-shadow: 0 0 2px #fff, 0 0 3px #e9e3e6, 0 0 4px #cfcacc, 0 0 5px #d1cace, 0 0 6px #dfd8dc, 0 0 7px #dad4d7, 0 0 10px #e6dee2;
+    }
+  } */
+
+  

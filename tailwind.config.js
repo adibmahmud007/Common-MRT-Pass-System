@@ -27,8 +27,10 @@ export default {
           24: "6rem",
           32: "8rem",
       }
+      
   }
   },
+  
   // eslint-disable-next-line no-undef
   plugins: [require("daisyui"),
   // eslint-disable-next-line no-undef
