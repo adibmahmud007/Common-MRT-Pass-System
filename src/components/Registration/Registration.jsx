@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import metro_img from "../../assets/metro_png.png";
 import { useState } from "react";
-
+import './Style.css'
+import '../../App.css'
 const Registration = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -27,16 +28,11 @@ const Registration = () => {
         // alert(username)
         // alert(password)
     }
-    // <div class="relative h-full w-full bg-black">
-    //     <div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
-    //     </div>
-    //     <div class="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]">
-    //     </div>
-    // </div>
+   //pattern-paper pattern-slate-900 pattern-bg-transparent pattern-opacity-100 pattern-size-4 min-h-screen 
     return (
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 min-h-screen  ">
-            <div className="md:p-20 ">
-                <div className="p-5 md:bg-gradient-to-bl from-slate-200 to-slate-500 max-w-lg mx-auto rounded-xl ">
+        <div className="reg-bg  min-h-screen  ">
+            <div className="md:p-20  ">
+                <div className="p-5 bg-slate-300 bg-opacity-60 max-w-lg mx-auto rounded-xl ">
                     <div className="text-center mb-3 ">
                         <h2 className="text-3xl text-center font-bold mb-8 text-white md:text-black">Welcome to MRT Pass System</h2>
                         <img className="w-24 mx-auto mb-3" src={metro_img} alt="" />
@@ -58,7 +54,7 @@ const Registration = () => {
 
                         <NavLink to='login'> <button onClick={handleSubmit} className="btn glass bg-blue-950 text-white text-lg px-16 ml-14">Register</button></NavLink>
 
-                        <p className="mt-2 text-white md:text-black">Have an account already? click here to <span className="text-green-700 font-bold underline"><Link to='/login'>Login</Link></span></p>
+                        <p className="mt-2 text-white ">Have an account already? click here to <span className="text-green-700 font-bold underline"><Link to='/login'>Login</Link></span></p>
                     </form>
                 </div>
             </div>
