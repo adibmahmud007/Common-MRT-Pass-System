@@ -17,6 +17,12 @@
     box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.3);
 }
 
+.home_bg{
+  background-image: url('./assets/home_bg.jpg');
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.6);
+}
+
 .glow {
     
     color: #fff;
