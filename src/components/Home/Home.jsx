@@ -4,9 +4,11 @@ import Footer from "../Footer/Footer";
 
 const Home = () => {
     return (
-        <div>
-           <Header></Header>
-           <Outlet></Outlet>
+        <div className="flex flex-col">
+            <div className="min-h-screen">
+            <Header></Header>
+            <Outlet></Outlet>
+            </div>
            <Footer></Footer>
         </div>
     );
