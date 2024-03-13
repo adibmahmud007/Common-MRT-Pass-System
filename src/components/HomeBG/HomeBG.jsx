@@ -2,7 +2,7 @@
 
 const HomeBG = () => {
     return (
-        <div className="home_bg">
+        <div className="">
             <p className="text-4xl font-extrabold text-slate-300 text-center">All Your Transportation need is now in a system.</p>
         </div>
     );

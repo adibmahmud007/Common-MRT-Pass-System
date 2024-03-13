@@ -1,4 +1,4 @@
-import { Link,  } from "react-router-dom";
+import { Link, useNavigate,  } from "react-router-dom";
 import metro_img from "../../assets/metro_png.png";
 import { useState } from "react";
 import './Style.css'
@@ -11,6 +11,8 @@ const Registration = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+const navigate = useNavigate()
 
     const handleUsernameChnage = e => {
         const newuser = e.target.value;
@@ -31,21 +33,29 @@ const Registration = () => {
         e.preventDefault();
        
         console.log(email,username,password,'from handlesubmit');
-        axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/registration", {
-            username,
-            email,
-            password,
-        })
-        .then((res) => {
-            console.log(res,'from axios response');
-            toast.success(res.data.message);
-          
-        })
-        .catch((error) => {
-            const errormsg=error.response.data.error.explainaton;
-            console.log(error);
-            toast.error(errormsg)
-        });
+
+        if(email&& username && password){
+            axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/registration", {
+                username,
+                email,
+                password,
+            })
+            .then((res) => {
+                console.log(res,'from axios response');
+                toast.success(res.data.message);
+     
+            })
+            .catch((error) => {
+                const errormsg=error.response.data.error.explainaton;
+                console.log(error);
+                toast.error(errormsg)
+            });
+            navigate("/login")
+        }
+
+       else{
+        toast.error("You have to fill the form")
+       }
     };
     
    
@@ -73,7 +83,11 @@ const Registration = () => {
                             <input type="password" required className="grow" placeholder="Password" value={password} name="password" />
                         </label>
 
-                        <Link to='/login'><button onClick={handleSubmit} className="btn glass bg-blue-950 text-white text-lg px-16 ml-14">Register</button></Link>
+                    
+                        
+                        <button onClick={handleSubmit} className="btn glass bg-blue-950 text-white text-lg px-16 ml-14">Register</button>
+                        
+                        
 
                         <p className="mt-2 text-white ">Have an account already? click here to <span className="text-green-700 font-bold underline"><Link to='/login'>Login</Link></span></p>
                     </form>

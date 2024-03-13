@@ -4,8 +4,8 @@ import { useState } from "react";
 
 const Login = () => {
 
-    const [username,setUsername]=useState('');
-    const [password,setPassword]=useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleUsernameChnage = e => {
         const newuser = e.target.value;
@@ -37,7 +37,7 @@ const Login = () => {
                             </label>
 
                             <div className="md:text-left text-center">
-                                
+
                                 <Link to="/home" ><button className="px-24 py-2  border-black bg-slate-900 text-white rounded-3xl text-lg font-bold">Login</button></Link>
 
                             </div>
