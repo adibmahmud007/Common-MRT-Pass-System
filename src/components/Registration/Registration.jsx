@@ -43,18 +43,16 @@ const navigate = useNavigate()
             .then((res) => {
                 console.log(res,'from axios response');
                 toast.success(res.data.message);
-     
+                navigate("/login")
             })
             .catch((error) => {
-                const errormsg=error.response.data.error.explainaton;
+                const errormsg=error.response.data.error.explanation;
                 console.log(error);
                 toast.error(errormsg)
-            });
-            navigate("/login")
+            }); 
         }
-
        else{
-        toast.error("You have to fill the form")
+        toast.error("Please fill the form to Register")
        }
     };
     

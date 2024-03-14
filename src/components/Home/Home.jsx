@@ -7,10 +7,9 @@ import HomeBG from "../HomeBG/HomeBG";
 const Home = () => {
     return (
         <div className="flex flex-col">
-            <div className="min-h-screen home_bg">
+            <div className="min-h-screen ">
             <Header></Header>
             <HomeBG></HomeBG>
-            
             </div>
             <Footer></Footer>
            
