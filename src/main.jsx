@@ -13,6 +13,7 @@ import Test from './components/Test/Test';
 import Registration from './components/Registration/Registration';
 import { Toaster } from 'react-hot-toast';
 import Recharge from './components/Recharge/Recharge';
+import Services from './components/Services/Services';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -29,9 +30,12 @@ const router = createBrowserRouter([
       {
         path:"/recharge",
         element:<Recharge></Recharge>,
-        
-      }
-      ,
+
+      },
+      {
+        path:"/services",
+        element: <Services></Services>
+      },
       {
         path: '/text',
         element: <Test></Test>
