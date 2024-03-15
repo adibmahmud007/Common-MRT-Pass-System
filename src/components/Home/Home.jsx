@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "../../App.css"
 import HomeBG from "../HomeBG/HomeBG";
+import Services from "../Services/Services";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <div className="min-h-screen ">
             <Header></Header>
             <HomeBG></HomeBG>
+            <Services></Services>
             </div>
             <Footer></Footer>
            
