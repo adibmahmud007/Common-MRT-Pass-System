@@ -8,11 +8,12 @@ import Services from "../Services/Services";
 const Home = () => {
     return (
         <div className="flex flex-col">
-            <div className="min-h-screen ">
+            <div className="min-h-screen home_bg overflow-hidden">
             <Header></Header>
             <HomeBG></HomeBG>
-            <Services></Services>
+            
             </div>
+            <Services></Services>
             <Footer></Footer>
         </div>
     );

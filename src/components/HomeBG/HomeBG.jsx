@@ -9,7 +9,7 @@ const HomeBG = () => {
         AOS.init({ duration: 2000 });
     }, [])
     return (
-        <div className="home_bg" >
+        <div className=" " >
             <div data-aos='fade-up'>
                 <p className="text-6xl font-extrabold text-slate-300 text-center glow pt-16 md:pt-28 home-font" >All Your Transportation <br /> need is now available<br /> in a system.</p>
 
