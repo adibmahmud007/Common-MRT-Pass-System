@@ -25,6 +25,13 @@
   /* overflow-x: hidden !important; */
 }
 
+.metro_bg{
+  background-image: url('./assets/Services_pictures/metroRail.jpg');
+  background-size: cover;
+  /* background-repeat: repeat; */
+  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7);
+}
+
 .glow {
     
     color: #fff;
@@ -39,10 +46,10 @@
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-size: 80px;
-    font-weight: bolder;
+    font-weight: 500;
     font-style: normal;
   }
-  
+
   .Button{
     padding: 10px 18px;
     border:  1.3px solid black;
@@ -52,6 +59,21 @@
   .Button:hover{
       background-color: rgba(0, 0, 0, 0.349);
       transition: .5s;
+  }
+
+  .Buy-button{
+    padding: 5px 80px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(154, 162, 168, 0.403);
+    font-size: larger;
+    font-weight: 700;
+  }
+  .Buy-button:hover{
+    background-color: aliceblue;
+    color: black;
+    transition: .8s;
   }
   /* @keyframes glow {
     from {
@@ -122,4 +144,19 @@
       
       border-radius: 15px;
     }
+    .metro_bg{
+      background-image: url('./assets/Services_pictures/metroRail.jpg');
+      background-size: 1000px;
+      /* background-repeat: repeat; */
+      box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.8);
+    }
+    .Buy-button{
+    padding: 5px 60px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(154, 162, 168, 0.218);
+    font-size: medium;
+    font-weight: 700;
+  }
   }

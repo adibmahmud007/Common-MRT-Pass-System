@@ -14,6 +14,7 @@ import Registration from './components/Registration/Registration';
 import { Toaster } from 'react-hot-toast';
 import Recharge from './components/Recharge/Recharge';
 import Services from './components/Services/Services';
+import MetroRail from './components/MetroRail/MetroRail';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
       {
         path: '/text',
         element: <Test></Test>
+      },
+      {
+        path:'/metro',
+        element: <MetroRail></MetroRail>,
+        loader: ()=>fetch('../public/station.json')
       }
 
 ]);
