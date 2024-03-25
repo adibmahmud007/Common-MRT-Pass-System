@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import Recharge from './components/Recharge/Recharge';
 import Services from './components/Services/Services';
 import MetroRail from './components/MetroRail/MetroRail';
+import Card from './components/Card/Card';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path:"/recharge",
         element:<Recharge></Recharge>,
 
+      },
+      {
+        path:"/card",
+        element: <Card></Card>
       },
       {
         path:"/services",

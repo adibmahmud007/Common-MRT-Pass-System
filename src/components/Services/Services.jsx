@@ -5,7 +5,7 @@ import "../../App.css"
 
 import metroRail from "../../assets/Services_pictures/metroRail.jpg"
 import Bus from "../../assets/Services_pictures/Bus.jpg"
-import Train from "../../assets/Services_pictures/Train.jpg"
+import launch from "../../assets/Services_pictures/launch.jpg"
 import Plane2 from "../../assets/Services_pictures/plane2.jpg"
 import { Link } from "react-router-dom";
 
@@ -34,9 +34,9 @@ const Services = () => {
                     </div>
                 </div>
                 <div className="md:pl-20 pb-3" data-aos="fade-right">
-                    <img className="w-[400px] md:h-[250px] rounded-xl" src={Train} alt="MetroRail" />
+                    <img className="w-[400px] md:h-[250px] rounded-xl" src={launch} alt="MetroRail" />
                     <div className=" md:w-[400px] md:h-[250px] h-[215px] rounded-xl md:ml-20 absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300 ease-in-out bg-black bg-opacity-50">
-                        <p className="text-white text-3xl font-semibold">Railway Service</p>
+                        <p className="text-white text-3xl font-semibold">Launch Service</p>
                     </div>
                 </div>
                 <div className="md:pl-10 pb-3" data-aos="fade-left">
