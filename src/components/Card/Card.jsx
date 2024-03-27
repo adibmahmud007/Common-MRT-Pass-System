@@ -4,34 +4,49 @@ import "../../App.css";
 // import { FcSimCardChip } from "react-icons/fc";
 import card_chip from "../../assets/card_chip_3.png"
 import card_circle from "../../assets/card_circle.png"
-import { useLoaderData } from "react-router-dom";
-// import { useEffect,useState } from "react";
+// import { useLoaderData } from "react-router-dom";
+import { useEffect,useState } from "react";
 import axios from 'axios';
+import toast from "react-hot-toast";
 
 
 const Card = () => {
-    const card = useLoaderData();
+    // const card = useLoaderData();
 
-    // const [card,setCard]=useState();
+    const [card,setCard]=useState('');
     // useEffect(()=>{
     //     fetch('https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo')
     //     .then(res => res.json())
     //     .then(data => setCard(data));
     // },[])
+
+    
+        axios.get("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo")
+            .then(res => {
+                setCard(res.data.content); 
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.error('Error fetching card info:', error);
+            });
+    
+    console.log(card,'from useeffect getting the cardinfo');
+
     // const url = ;
 
     const handleGenerate = () => {
-        axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/generate", { withCredentials: true })
+        axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/generate",{},{ withCredentials: true })
             .then(response => {
-                // Handle successful response
+                toast.success(response.message);
+                
                 console.log(response.data, 'from axios card'); // This will log the response data
             })
+            .then(data => setCard(data))
             .catch(error => {
                 // Handle error
                 console.error('Error fetching data:', error);
             });
     }
-    // console.log(card);
     return (
         <div className="bg-zinc-900 ">
             <div className="flex flex-col min-h-screen">
@@ -66,7 +81,7 @@ const Card = () => {
                                     <img src={card_chip} alt="" />
                                 </div>
                                 <div className="text-white pl-10 text-xl pt-5 ">
-                                    <pre>1234  4567  7890  1234</pre>
+                                    <pre></pre>
                                     <h1 className="text-lg text-white  pt-4">Username</h1>
                                 </div>
                             </div>
