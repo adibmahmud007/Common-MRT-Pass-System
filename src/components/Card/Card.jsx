@@ -4,17 +4,56 @@ import "../../App.css";
 // import { FcSimCardChip } from "react-icons/fc";
 import card_chip from "../../assets/card_chip_3.png"
 import card_circle from "../../assets/card_circle.png"
+import { useLoaderData } from "react-router-dom";
+// import { useEffect,useState } from "react";
+import axios from 'axios';
+
 
 const Card = () => {
+    const card = useLoaderData();
+
+    // const [card,setCard]=useState();
+    // useEffect(()=>{
+    //     fetch('https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo')
+    //     .then(res => res.json())
+    //     .then(data => setCard(data));
+    // },[])
+    // const url = ;
+
+    const handleGenerate = () => {
+        axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/generate", { withCredentials: true })
+            .then(response => {
+                // Handle successful response
+                console.log(response.data, 'from axios card'); // This will log the response data
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error fetching data:', error);
+            });
+    }
+    // console.log(card);
     return (
         <div className="bg-zinc-900 ">
             <div className="flex flex-col min-h-screen">
                 <div className="shadow-sm shadow-zinc-800">
                     <Header></Header>
                 </div>
-                <div className="flex mx-[100px] justify-between mt-24 ">
-                    <div>
+                <div className="fleX md:mx-[100px] mx-[75px] justify-between md:mt-24 mt-8 ">
+                    <div className="md:text-left text-center md:pt-10">
                         <h1 className="text-3xl text-white font-semibold">Card Details</h1>
+                        <div className="text-white pt-4">
+                            <h1 className="pb-3 text-xl font-semibold">Username</h1>
+                            <div className="flex gap-10 md:gap-40">
+                                <div className="pt-3">
+                                    <p className="text-sm font-semibold">Balance</p>
+                                    <h1 className="text-2xl font-bold">$1000</h1>
+                                </div>
+                                <div className="mt-5">
+                                    <button onClick={handleGenerate} className="btn">Generate Card</button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div className="w-[300px] h-[300px]">
                         <div className="circle">
@@ -28,6 +67,7 @@ const Card = () => {
                                 </div>
                                 <div className="text-white pl-10 text-xl pt-5 ">
                                     <pre>1234  4567  7890  1234</pre>
+                                    <h1 className="text-lg text-white  pt-4">Username</h1>
                                 </div>
                             </div>
                         </div>

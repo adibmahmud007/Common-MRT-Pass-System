@@ -151,6 +151,11 @@
     /* background-position-x: center; */
   }
 
+  .fleX{
+    display: flex;
+    flex-direction: row;
+  }
+
   @media screen and (max-width: 768px) {
     .home-font {
       font-family: "Dancing Script", cursive;
@@ -158,6 +163,10 @@
       font-size: 40px;
       font-weight: bolder;
       font-style: normal;
+    }
+    .fleX{
+      display: flex;
+      flex-direction: column-reverse;
     }
     .Button{
       padding: 7px 13px;
