@@ -16,6 +16,7 @@ import Recharge from './components/Recharge/Recharge';
 import Services from './components/Services/Services';
 import MetroRail from './components/MetroRail/MetroRail';
 import Card from './components/Card/Card';
+import Bus from './components/Bus/Bus';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
       {
         path:'/metro',
         element: <MetroRail></MetroRail>,
+        loader: ()=>fetch('../public/station.json')
+      },
+      {
+        path:'/bus',
+        element: <Bus></Bus>,
         loader: ()=>fetch('../public/station.json')
       }
 

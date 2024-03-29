@@ -31,6 +31,12 @@
   /* background-repeat: repeat; */
   box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7);
 }
+.bus_bg{
+  background-image: url('./assets/Services_pictures/Bus.jpg');
+  background-size: cover;
+  /* background-repeat: repeat; */
+  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7);
+}
 .circle_bg{
   background-image: url('./assets/orange_circle.png');
   width: 200px;
