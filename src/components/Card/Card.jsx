@@ -5,7 +5,7 @@ import "../../App.css";
 import card_chip from "../../assets/card_chip_3.png"
 import card_circle from "../../assets/card_circle.png"
 // import { useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import axios from 'axios';
 import toast from "react-hot-toast";
 
@@ -14,7 +14,7 @@ const Card = () => {
     // const card = useLoaderData();
 
     const [card, setCard] = useState('');
-    const [generate, setGenerate] = useState(false);
+    // const [generate, setGenerate] = useState(false);
     // useEffect(()=>{
     //     fetch('https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo')
     //     .then(res => res.json())
@@ -52,7 +52,7 @@ const Card = () => {
     const handleGenerate = () => {
         axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/generate", {}, { withCredentials: true })
             .then(response => {
-                toast.success(response.message);
+                toast.success('Card Generate successful');
                 // setGenerate(true);
                 console.log(response.data, 'from axios card'); // This will log the response data
             })
