@@ -186,6 +186,13 @@
       /* background-repeat: repeat; */
       box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.8);
     }
+    .bus_bg{
+      background-image: url('./assets/Services_pictures/Bus.jpg');
+      background-size: 1500px;
+      /* transform: translateX(-200px); */
+      /* background-repeat: repeat; */
+      box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7);
+    }
     .Buy-button{
     padding: 5px 60px;
     color: white;
