@@ -17,6 +17,7 @@ import Services from './components/Services/Services';
 import MetroRail from './components/MetroRail/MetroRail';
 import Card from './components/Card/Card';
 import Bus from './components/Bus/Bus';
+import Launch from './components/Launch/Launch';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path:'/bus',
         element: <Bus></Bus>,
         loader: ()=>fetch('../public/station.json')
+      },
+      {
+        path:'/launch',
+        element: <Launch></Launch>
       }
 
 ]);
