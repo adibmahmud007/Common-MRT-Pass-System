@@ -15,7 +15,7 @@ const Services = () => {
         AOS.init({ duration: 2000 });
     }, [])
     return (
-        <div className="md:h-[700px] min-h-screen bg-black text-white"  >
+        <div id="services" className="md:h-[700px] min-h-screen bg-black text-white"  >
             <p className="text-4xl  text-center grad_text play-bold font-bold py-5" data-aos="flip-up">Services We Provide</p>
 
             <div className="md:p-10 p-2 md:grid md:grid-cols-2 gap-5">

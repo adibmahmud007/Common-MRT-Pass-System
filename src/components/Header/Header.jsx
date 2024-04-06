@@ -20,7 +20,8 @@ const Header = () => {
                     </ul>
                 </div>
 
-                <a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2 md:translate-x-12 "><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a>
+                <a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2 md:pl-14 "><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a>
+                
 
             </div>
             <div className="navbar-center items-center hidden lg:flex pl-24 ">
