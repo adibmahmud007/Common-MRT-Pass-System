@@ -87,7 +87,7 @@
 
   .Button{
     /* max-width: 250px; */
-    padding: 1rem;
+    padding:10px 20px ;
     /* color: white; */
     border-width: 1px;
     border-style: solid;
@@ -96,7 +96,7 @@
         rgb(39, 12, 241), rgb(212, 4, 115)
       ) 1 ;
     
-    border-radius: 15px;
+    /* border-radius: 15px; */
   }
   .Button:hover{
       background-color: rgba(44, 43, 43, 0.349);
@@ -204,10 +204,17 @@
       flex-direction: column-reverse;
     }
     .Button{
-      padding: 7px 13px;
-      border:  1.3px solid black;
+      /* max-width: 250px; */
+      padding:10px 20px ;
+      /* color: white; */
+      border-width: 1px;
+      border-style: solid;
+      border-image: 
+        linear-gradient(
+          rgb(39, 12, 241), rgb(212, 4, 115)
+        ) 1 ;
       
-      border-radius: 15px;
+      /* border-radius: 15px; */
     }
     .metro_bg{
       background-image: url('./assets/Services_pictures/metroRail.jpg');

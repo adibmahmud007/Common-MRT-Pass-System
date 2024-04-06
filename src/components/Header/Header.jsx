@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import user_profile from "../../assets/user_profile-3.png"
-import logo from "../../assets/logo.png"
+// import logo from "../../assets/logo.png"
 
 const Header = () => {
     return (
@@ -20,7 +20,7 @@ const Header = () => {
                     </ul>
                 </div>
 
-                <a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2  "><img className="md:w-24 w-12  hidden md:block " src={logo} alt="" /><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a>
+                <a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2 md:translate-x-12 "><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a>
 
             </div>
             <div className="navbar-center items-center hidden lg:flex pl-24 ">
