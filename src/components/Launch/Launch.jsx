@@ -116,7 +116,7 @@ const Launch = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="pl-6 pt-4 md:pb-0 pb-2">
+                    <section className="md:pl-6 pt-4 md:pb-0 pb-2 md:text-left text-center">
                         <button className="bg-lime-500 rounded-2xl px-9 text-lg font-semibold py-2">Buy Ticket</button>
                     </section>
 
