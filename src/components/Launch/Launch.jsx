@@ -20,21 +20,21 @@ const Launch = () => {
 
 
     return (
-        <div className="launch_bg">
-            <div className="flex flex-col min-h-screen">
+        <div className="launch_bg ">
+            <div className="flex flex-col px-1 py-2 min-h-screen">
                 <Header></Header>
-                <section className="w-[650px] h-[400px] bg-black opacity-75 translate-x-64 translate-y-14 rounded-md">
+                <section className="md:w-[650px] md:h-[400px] p-2 bg-black opacity-75 md:translate-x-64 md:translate-y-14 rounded-md">
                     <div className="text-white px-5 py-3">
-                        <h1 className="text-4xl font-bold pb-2 font-serif">Get Your Trip By Launch</h1>
+                        <h1 className="md:text-4xl text-3xl font-bold pb-2 font-serif">Get Your Trip By Launch</h1>
                         <p className="text-sm">Set your origin and destination to travel</p>
                     </div>
                     <section className="px-5 py-3 text-white">
-                        <p>Select Destination</p>
-                        <div className="flex pt-3 gap-5">
+                        <p className="text-sm">Select Destination</p>
+                        <div className="md:flex pt-3 gap-5">
                             <div>
                                 {/* <p>Enter the type of cabin</p> */}
-                                <details className="dropdown cursor-pointer">
-                                    <summary className=" bg-white w-[250px] text-black p-2 rounded-sm">Enter Origin</summary>
+                                <details className="dropdown cursor-pointer pb-2 md:pb-0">
+                                    <summary className=" bg-white w-[300px] md:w-[250px] text-black p-2 rounded-sm">Enter Origin</summary>
                                     <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                         <li><a>Single Cabin</a></li>
                                         <li><a>Double Cabin</a></li>
@@ -43,11 +43,11 @@ const Launch = () => {
                                     </ul>
                                 </details>
                             </div>
-                            <img className="w-10" src={doublegreen} alt="" />
+                            <img className="md:translate-x-0 translate-x-64 w-10" src={doublegreen} alt="" />
                             <div>
                                 {/* <p>Enter the type of cabin</p> */}
-                                <details className="dropdown cursor-pointer">
-                                    <summary className=" bg-white w-[250px] text-black p-2 rounded-sm">Enter Destination</summary>
+                                <details className="dropdown cursor-pointer pt-2 md:pt-0">
+                                    <summary className=" bg-white w-[300px]  md:w-[250px] text-black p-2 rounded-sm">Enter Destination</summary>
                                     <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                         <li><a>Single Cabin</a></li>
                                         <li><a>Double Cabin</a></li>
@@ -58,11 +58,11 @@ const Launch = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="text-white px-5 py-1 flex gap-20">
-                        <div>
-                            <p>Enter the type of cabin</p>
-                            <details className="dropdown cursor-pointer">
-                                <summary className=" bg-white w-[250px] text-black p-2 rounded-sm">Select Cabin type</summary>
+                    <section className="text-white px-5 py-1 md:flex gap-20">
+                        <div className="md:pt-0 pt-3">
+                            <p className="text-sm">Enter the type of cabin</p>
+                            <details className="dropdown cursor-pointer pb-5">
+                                <summary className=" bg-white w-[300px]  md:w-[250px] text-black p-2 rounded-sm">Select Cabin type</summary>
                                 <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     <li><a>Single Cabin</a></li>
                                     <li><a>Double Cabin</a></li>
@@ -72,9 +72,9 @@ const Launch = () => {
                             </details>
                         </div>
                         <div>
-                            <p>Select Launch Company</p>
-                            <details className="dropdown cursor-pointer">
-                                <summary className=" bg-white w-[250px] text-black p-2 rounded-sm">Select Launch </summary>
+                            <p className="text-sm">Select Launch Company</p>
+                            <details className="dropdown cursor-pointer pb-2">
+                                <summary className=" bg-white w-[300px]   md:w-[250px] text-black p-2 rounded-sm">Select Launch </summary>
                                 <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     <li><a>Parabat-11</a></li>
                                     <li><a>Sundarban-10</a></li>
@@ -84,8 +84,8 @@ const Launch = () => {
                             </details>
                         </div>
                     </section>
-                    <section className="flex gap-12">
-                        <div className="pt-4">
+                    <section className="md:flex gap-12">
+                        <div className="md:pt-0 pt-4">
 
                             <div className="flex gap-4 items-center pl-3">
                                 <h1><FaRegUser className="h-10 w-16 text-white" /></h1>
@@ -100,9 +100,9 @@ const Launch = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-4">
+                        <div className="md:pt-0 pt-4">
 
-                            <div className="flex gap-4 items-center pl-3">
+                            <div className="flex gap-4 items-center pl-8 md:pb-0 pb-2">
                                 <h1><FaRegUser className="h-7 w-10 text-white" /></h1>
                                 <div className="text-white ">
                                     <h1 className="text-lg font-semibold">Children</h1>
@@ -116,7 +116,7 @@ const Launch = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="pl-6 pt-4">
+                    <section className="pl-6 pt-4 md:pb-0 pb-2">
                         <button className="bg-lime-500 rounded-2xl px-9 text-lg font-semibold py-2">Buy Ticket</button>
                     </section>
 
