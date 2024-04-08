@@ -18,6 +18,7 @@ import MetroRail from './components/MetroRail/MetroRail';
 import Card from './components/Card/Card';
 import Bus from './components/Bus/Bus';
 import Launch from './components/Launch/Launch';
+import Plane from './components/Plane/Plane';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:'/launch',
         element: <Launch></Launch>
+      },
+      {
+        path: '/plane',
+        element: <Plane></Plane>
       }
 
 ]);
