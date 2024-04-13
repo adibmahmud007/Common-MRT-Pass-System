@@ -38,12 +38,12 @@ const HomeBG = () => {
         AOS.init({ duration: 2000 });
     }, [])
     return (
-        <div className=" " >
+        <div className="md:mt-8 " >
             <div data-aos='fade-up' className="md:pl-20 pl-10 ">
-                <p className="md:text-6xl text-3xl font-extrabold  pt-16 md:pt-24 play-bold" ><h1 className="grad_text">All Your Transportation <br /> need is now available<br /> in a system.</h1></p>
+                <p className="md:text-7xl text-3xl font-extrabold  pt-16 md:pt-24 play-bold" ><h1 className="grad_text">All Your Transportation <br /> need is now available<br /> in a system.</h1></p>
 
 
-                <div className='scroll-smooth delay-1000  py-12 md:py-16 text-center text-white'>
+                <div className='scroll-smooth delay-1000  py-12 md:py-20 text-center text-white'>
                     <a onClick={() => smoothScroll('#services')} href="#services"> <button className="font-semibold text-center text-sm md:text-lg white Button" >Learn More</button></a>
                 </div>
 

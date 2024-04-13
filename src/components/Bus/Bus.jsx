@@ -34,7 +34,7 @@ const Bus = () => {
                         <p className="pl-5 md:pl-32 pt-5 md:text-4xl text-xl font-semibold font-sans">Ticket / Fare</p>
                         <p className="p-5 md:text-lg text-sm md:pl-32 pt-5">Select Origin and destination to travel in Bus</p>
                     </div>
-                    <section className="md:flex gap-10">
+                    <section className="md:flex  gap-10">
                         <div className="w-[220px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-6 translate-x-20">
                             <div className="flex gap-10 items-center">
                                 <div>
