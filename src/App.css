@@ -44,6 +44,13 @@
   /* transform: translateY(200px); */
   /* box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.2); */
 }
+.plane_bg{
+  background-image: url('./assets/Services_pictures/plane2.jpg');
+  background-size: cover;
+  /* background-repeat: repeat; */
+  /* transform: translateY(200px); */
+  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5);
+}
 .circle_bg{
   background-image: url('./assets/orange_circle.png');
   width: 200px;
