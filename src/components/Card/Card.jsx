@@ -5,26 +5,33 @@ import "../../App.css";
 import card_chip from "../../assets/card_chip_3.png"
 import card_circle from "../../assets/card_circle.png"
 // import { useLoaderData } from "react-router-dom";
-import {  useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 import toast from "react-hot-toast";
 
 
 const Card = () => {
-    // const card = useLoaderData();
 
     const [card, setCard] = useState('');
-    // const [generate, setGenerate] = useState(false);
-    // useEffect(()=>{
-    //     fetch('https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo')
-    //     .then(res => res.json())
-    //     .then(data => setCard(data));
-    // },[])
 
+    const [cardno, setCardno] = useState('');
+    const [amount, setAmount] = useState();
+
+    console.log(cardno, amount, 'from recharge')
+
+
+    const handleCardChange = (e) => {
+        const newcardno = e.target.value;
+        setCardno(newcardno);
+    }
+    const handleAmountChange = (e) => {
+        const newamount = e.target.value;
+        setAmount(newamount);
+    }
 
 
     const handleDetails = () => {
-        axios.get("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo", { withCredentials: true })
+        axios.get("http://localhost:8000/api/v1/card/cardInfo", { withCredentials: true })
             .then(res => {
                 setCard(res.data); // Assuming response data is what you need to store
                 console.log(res.data);
@@ -38,7 +45,7 @@ const Card = () => {
     // Ensure card has data before accessing nested properties
     const username = card ? card.data.username : 'Username';
     const cardnumber = card ? card.data.cardnumber : 'xxx xxx xxx xxx';
-    const balance= card ? card.data.balance : '000'
+    const balance = card ? card.data.balance : '000'
     // if (generate === true) {
 
     // }
@@ -50,9 +57,29 @@ const Card = () => {
     // const url = ;
 
     const handleGenerate = () => {
-        axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/card/generate", {}, { withCredentials: true })
+        
+        axios.post("http://localhost:8000/api/v1/card/generate", {}, { withCredentials: true })
             .then(response => {
                 toast.success('Card Generate successful');
+                // setGenerate(true);
+                console.log(response.data, 'from axios card'); // This will log the response data
+            })
+
+            .catch(error => {
+                // Handle error
+                toast.error('Card already generated')
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    const handleRecharge = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:8000/api/v1/card/recharge", {
+            cardno,
+             amount,
+        }, { withCredentials: true })
+            .then(response => {
+                toast.success('Card Recharge successful');
                 // setGenerate(true);
                 console.log(response.data, 'from axios card'); // This will log the response data
             })
@@ -69,7 +96,7 @@ const Card = () => {
                 <div className="shadow-sm shadow-zinc-800">
                     <Header></Header>
                 </div>
-                <div className="fleX md:mx-[100px] mx-[75px] justify-between md:mt-24 mt-5 ">
+                <div className="fleX md:mx-[200px] mx-[75px] justify-between md:mt-24 mt-5 ">
                     <div className="md:text-left text-center md:pt-10">
                         <h1 className="text-3xl text-white font-semibold">Card Details</h1>
                         <div className="text-white md:pt-4">
@@ -90,6 +117,34 @@ const Card = () => {
                             </div>
 
                         </div>
+                        <section className="pt-4">
+                            {/* Open the modal using document.getElementById('ID').showModal() method */}
+                            <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Recharge Card</button>
+                            <dialog id="my_modal_1" className="modal">
+                                <div className="modal-box">
+                                    <h3 className="font-bold text-lg">Recharge Here</h3>
+                                    <div className="">
+                                        <form method="dialog">
+                                            <div className="pb-2 ">
+                                                <label onChange={handleCardChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
+
+                                                    <input type="text" required value={cardno} className="grow " placeholder="Username" />
+                                                </label>
+                                                <label onChange={handleAmountChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
+
+                                                    <input type="text" required value={amount} className="grow " placeholder="Username" />
+                                                </label>
+
+                                            </div>
+                                            <div className="flex gap-60">
+                                                <button onClick={handleRecharge} className="btn">Recharge</button>
+                                                <button className="btn">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </dialog>
+                        </section>
                     </div>
                     <div className="w-[300px] h-[300px]">
                         <div className="circle">

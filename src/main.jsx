@@ -40,8 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/card",
-        element: <Card></Card>,
-        loader: ()=>fetch('https://common-mrt-pass-system-production.up.railway.app/api/v1/card/cardInfo')
+        element: <Card></Card>
       },
       {
         path:"/services",

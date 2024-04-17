@@ -35,7 +35,7 @@ const navigate = useNavigate()
         console.log(email,username,password,'from handlesubmit');
 
         if(email&& username && password){
-            axios.post("https://common-mrt-pass-system-production.up.railway.app/api/v1/registration", {
+            axios.post("http://localhost:8000/api/v1/registration", {
                 username,
                 email,
                 password,
