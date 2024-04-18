@@ -19,6 +19,8 @@ import Card from './components/Card/Card';
 import Bus from './components/Bus/Bus';
 import Launch from './components/Launch/Launch';
 import Plane from './components/Plane/Plane';
+import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess';
+import PaymentFail from './components/PaymentFail/paymentFail';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -67,6 +69,15 @@ const router = createBrowserRouter([
       {
         path: '/plane',
         element: <Plane></Plane>
+      }
+      ,
+      {
+        path:'/card/recharge/success/:tran_Id',
+        element: <PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path:'/card/recharge/fail/:tran_Id',
+        element: <PaymentFail></PaymentFail>
       }
 
 ]);

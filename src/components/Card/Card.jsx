@@ -5,7 +5,7 @@ import "../../App.css";
 import card_chip from "../../assets/card_chip_3.png"
 import card_circle from "../../assets/card_circle.png"
 // import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import toast from "react-hot-toast";
 
@@ -14,10 +14,10 @@ const Card = () => {
 
     const [card, setCard] = useState('');
 
-    const [cardno, setCardno] = useState('');
+    const [cardnumber, setCardno] = useState('');
     const [amount, setAmount] = useState();
 
-    console.log(cardno, amount, 'from recharge')
+    console.log(cardnumber, amount, 'from recharge')
 
 
     const handleCardChange = (e) => {
@@ -44,7 +44,7 @@ const Card = () => {
 
     // Ensure card has data before accessing nested properties
     const username = card ? card.data.username : 'Username';
-    const cardnumber = card ? card.data.cardnumber : 'xxx xxx xxx xxx';
+    const cardNumber = card ? card.data.cardnumber : 'xxx xxx xxx xxx';
     const balance = card ? card.data.balance : '000'
     // if (generate === true) {
 
@@ -57,7 +57,7 @@ const Card = () => {
     // const url = ;
 
     const handleGenerate = () => {
-        
+
         axios.post("http://localhost:8000/api/v1/card/generate", {}, { withCredentials: true })
             .then(response => {
                 toast.success('Card Generate successful');
@@ -75,12 +75,13 @@ const Card = () => {
     const handleRecharge = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/v1/card/recharge", {
-            cardno,
-             amount,
+            cardnumber,
+            amount,
         }, { withCredentials: true })
             .then(response => {
                 toast.success('Card Recharge successful');
                 // setGenerate(true);
+                window.location.replace(response.data);
                 console.log(response.data, 'from axios card'); // This will log the response data
             })
 
@@ -90,6 +91,27 @@ const Card = () => {
                 console.error('Error fetching data:', error);
             });
     }
+
+    const [history, setHistory] = useState([])
+    console.log(history, 'from axios history')
+
+
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/v1/card/rechargehistory", { withCredentials: true })
+            .then(res => {
+                const responseData = res.data;
+                if (responseData.success) {
+                    setHistory(responseData.data); // Assuming response data is what you need to store
+                    console.log(responseData.data);
+                } else {
+                    console.error('Error fetching card info:', responseData.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching card info:', error);
+            });
+    }, []);
     return (
         <div className="bg-zinc-900 ">
             <div className="flex flex-col md:min-h-screen h-[650px]">
@@ -105,7 +127,13 @@ const Card = () => {
                                 <div className="pt-3 flex gap-7">
                                     <div className="md:pl-0 pl-5">
                                         <p className="text-sm font-semibold">Balance</p>
-                                        <h1 className="text-2xl font-bold">${balance}</h1>
+                                        <h1 className="text-2xl font-bold">
+
+
+                                            <div className="flex text-white w-6">
+
+                                                <div>{balance}</div>
+                                            </div></h1>
                                     </div>
                                     <div className="md:mt-1 mt-2">
                                         <button onClick={handleDetails} className="btn pl-2">Show Details</button>
@@ -117,34 +145,61 @@ const Card = () => {
                             </div>
 
                         </div>
-                        <section className="pt-4">
-                            {/* Open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Recharge Card</button>
-                            <dialog id="my_modal_1" className="modal">
-                                <div className="modal-box">
-                                    <h3 className="font-bold text-lg">Recharge Here</h3>
-                                    <div className="">
-                                        <form method="dialog">
-                                            <div className="pb-2 ">
-                                                <label onChange={handleCardChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
+                        <div className="flex gap-8">
+                            <section className="pt-4">
+                                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Recharge Card</button>
+                                <dialog id="my_modal_1" className="modal">
+                                    <div className="modal-box">
+                                        <h3 className="font-bold text-lg">Recharge Here</h3>
+                                        <div className="">
+                                            <form method="dialog">
+                                                <div className="pb-2 ">
+                                                    <label onChange={handleCardChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
 
-                                                    <input type="text" required value={cardno} className="grow " placeholder="Username" />
-                                                </label>
-                                                <label onChange={handleAmountChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
+                                                        <input type="text" value={cardnumber} className="grow " placeholder="Enter Card Number" />
+                                                    </label>
+                                                    <label onChange={handleAmountChange} className="input input-bordered border-black flex items-center gap-2 md:w-96 w-[350px] mb-4  rounded-2xl">
 
-                                                    <input type="text" required value={amount} className="grow " placeholder="Username" />
-                                                </label>
+                                                        <input type="text" value={amount} className="grow " placeholder="Enter amount" />
+                                                    </label>
 
-                                            </div>
-                                            <div className="flex gap-60">
-                                                <button onClick={handleRecharge} className="btn">Recharge</button>
-                                                <button className="btn">Close</button>
-                                            </div>
-                                        </form>
+                                                </div>
+                                                <div className="flex gap-60">
+                                                    <button onClick={handleRecharge} className="btn">Recharge</button>
+                                                    <button className="btn">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </dialog>
-                        </section>
+                                </dialog>
+                            </section>
+                            <section>
+                                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>open modal</button>
+                                <dialog id="my_modal_2" className="modal">
+                                    <div className="modal-box">
+                                        <div>
+                                            {/* Render the history data as needed */}
+                                            <h1>Recharge History</h1>
+                                            <ul>
+                                                {history.map(item => (
+                                                    <li key={item.id}>
+                                                        <p>Transaction ID: {item.transactionId}</p>
+                                                        <p>Amount: {item.amount}</p>
+                                                        <p>Status: {item.status}</p>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <p className="py-4">Press ESC key or click outside to close</p>
+                                    </div>
+                                    <form method="dialog" className="modal-backdrop">
+                                        <button>close</button>
+                                    </form>
+                                </dialog>
+                            </section>
+                        </div>
                     </div>
                     <div className="w-[300px] h-[300px]">
                         <div className="circle">
@@ -157,7 +212,7 @@ const Card = () => {
                                     <img src={card_chip} alt="" />
                                 </div>
                                 <div className="text-white pl-10 text-xl pt-5 ">
-                                    <pre>{cardnumber}</pre>
+                                    <pre>{cardNumber}</pre>
                                     <h1 className="text-lg text-white  pt-4">{username}</h1>
                                 </div>
                             </div>
