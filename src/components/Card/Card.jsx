@@ -112,6 +112,23 @@ const Card = () => {
                 console.error('Error fetching card info:', error);
             });
     }, []);
+
+    const handleDeleteHistory = () => {
+        axios.delete("http://localhost:8000/api/v1/card/rechargehistory", { withCredentials: true })
+            .then(res => {
+                const responseData = res.data;
+                console.log(responseData, 'from delete')
+                if (responseData.success) {
+                    toast.success('Recharge History Deleted Successfully');
+                } else {
+                    console.error('Error fetching card info:', responseData.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching card info:', error);
+            });
+    }
+
     return (
         <div className="bg-zinc-900 ">
             <div className="flex flex-col md:min-h-screen h-[650px]">
@@ -135,17 +152,19 @@ const Card = () => {
                                                 <div>{balance}</div>
                                             </div></h1>
                                     </div>
-                                    <div className="md:mt-1 mt-2">
-                                        <button onClick={handleDetails} className="btn pl-2">Show Details</button>
-                                    </div>
+
                                 </div>
-                                <div className="mt-5">
-                                    <button onClick={handleGenerate} className="btn">Generate Card</button>
-                                </div>
+
                             </div>
 
                         </div>
                         <div className="flex gap-8">
+                            <div className="md:mt-4 mt-2">
+                                <button onClick={handleDetails} className="btn pl-2">Show Details</button>
+                            </div>
+                            <div className="mt-4">
+                                <button onClick={handleGenerate} className="btn">Generate Card</button>
+                            </div>
                             <section className="pt-4">
                                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                                 <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Recharge Card</button>
@@ -174,9 +193,9 @@ const Card = () => {
                                     </div>
                                 </dialog>
                             </section>
-                            <section>
+                            <section className="pt-4">
                                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>open modal</button>
+                                <button className="btn " onClick={() => document.getElementById('my_modal_2').showModal()}>Recharge History</button>
                                 <dialog id="my_modal_2" className="modal">
                                     <div className="modal-box">
                                         <div>
@@ -192,7 +211,10 @@ const Card = () => {
                                                 ))}
                                             </ul>
                                         </div>
-                                        <p className="py-4">Press ESC key or click outside to close</p>
+                                        <div className="text-right pt-2">
+                                            <button onClick={handleDeleteHistory} className="bg-black text-white p-2 rounded-lg ">Delete history</button>
+                                        </div>
+
                                     </div>
                                     <form method="dialog" className="modal-backdrop">
                                         <button>close</button>
