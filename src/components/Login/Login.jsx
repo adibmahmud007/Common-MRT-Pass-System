@@ -37,9 +37,9 @@ const Login = () => {
                 navigate("/home")
             })
             .catch((error) => {
-                const errormsg=error.response.data.error.explanation;
+                // const errormsg=error.response.data.error.explanation;
                 console.log(error);
-                toast.error(errormsg)
+                // toast.error(errormsg)
             }); 
         }
        else{
