@@ -105,6 +105,20 @@
     
     /* border-radius: 15px; */
   }
+  .Btn{
+    padding:10px 20px  ;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+    color: black;
+  }
+  .BtnActive{
+    padding:10px 20px  ;
+    border-width: 1px;
+    border-style: solid;
+    background-color: Black;
+    color: white;
+  }
   .Button:hover{
       background-color: rgba(44, 43, 43, 0.349);
       transition: .5s;

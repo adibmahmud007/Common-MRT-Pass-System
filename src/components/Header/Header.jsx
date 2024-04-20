@@ -13,7 +13,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 backdrop-blur-sm shadow-slate-300 shadow-sm text-zinc-200 font-semibold rounded-box w-40">
                         <Link to='/home'><li><a>Home</a></li></Link>
                         <Link to='/services'><li><a>Services</a></li></Link>
-                        <li><a>Profile</a></li>
+                        <Link to='/profile'><li><a>Profile</a></li></Link>
                         <Link to="/card"><li><a>Card</a></li></Link>
                         <li><a>About Us</a></li>
                         <li><a>Contact</a></li>
@@ -28,14 +28,14 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1 mt-2 text-base play-regular  pl-20">
                     <Link className="hover:text-zinc-400 pr-3" to='/home'><li><a >Home</a></li></Link>
                     <Link className="hover:text-zinc-400 pr-3" to='/services'><li><a>Services</a></li></Link>
-                    <li className="hover:text-zinc-400 pr-3"><a>Profile</a></li>
+                    <Link to='/profile'><li className="hover:text-zinc-400 pr-3"><a>Profile</a></li></Link>
                     <Link className="hover:text-zinc-400 pr-3" to="/card"><li><a>Card</a></li></Link>
                     <li className="hover:text-zinc-400 pr-3"><a>About Us</a></li>
 
                 </ul>
             </div>
             <div className="navbar-end px-5 pt-1">
-                <Link><a href=""><img className="w-11 hover:bg-gray-300 rounded-full" src={user_profile} alt="" /></a></Link>
+                <Link to='/profile'><a href=""><img className="w-11 hover:bg-gray-300 rounded-full" src={user_profile} alt="" /></a></Link>
             </div>
         </div>
     );
