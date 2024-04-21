@@ -106,17 +106,20 @@
     /* border-radius: 15px; */
   }
   .Btn{
-    padding:10px 20px  ;
-    border-width: 1px;
-    border-style: solid;
-    background-color: white;
-    color: black;
+    padding:15px 20px  ;
+    font-weight: bold;
+    background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+    color: white;
+  }
+  .Btn:hover{
+    border: 1px solid white;
   }
   .BtnActive{
-    padding:10px 20px  ;
+    padding:15px 20px  ;
     border-width: 1px;
     border-style: solid;
-    background-color: Black;
+    font-weight: bold;
+    background-color: darkslategray;
     color: white;
   }
   .Button:hover{

@@ -4,7 +4,7 @@ import "../../App.css"
 const ButtonGroup = ({buttons, isSelected,setIsSelected}) => {
 
     return (
-        <div className=" flex flex-col border border-violet-500 w-[350px] h-screen text-center pt-8">
+        <div className=" flex flex-col w-[450px] h-screen text-center ">
 
             {
                 // eslint-disable-next-line react/prop-types

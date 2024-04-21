@@ -33,14 +33,14 @@ const RenderComponent=({index})=>{
 
 const Profile = () => {
     const buttons = [
-        "component-1", "component-2", "component-3", "component-4"
+        "Profile Create", "Profile Update", "Show Profile", "Delete Profile"
     ]
     const [isSelected,setIsSelected]=useState(0);
     return (
         <div className="bg-zinc-800 shadow-lg">
             <div className="flex flex-col h-screen">
                 <Header></Header>
-                <div className="flex">
+                <div className="flex text-xl">
                     <ButtonGroup buttons={buttons} isSelected={isSelected} setIsSelected={setIsSelected}></ButtonGroup>
                     <RenderComponent index={isSelected}></RenderComponent>
                 </div>
