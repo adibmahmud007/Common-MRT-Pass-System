@@ -105,7 +105,7 @@ const Comp_1 = () => {
                             </div>
                             <div className="px-6 py-4 pl-2">
                                 <button onClick={handleSubmit}
-                                 className="p-3 bg-green-500 rounded-xl hover:bg-green-700 text-sm font-semibold">Update Profile</button>
+                                 className="p-3 bg-green-500 rounded-xl hover:bg-green-700 text-sm font-semibold">Create Profile</button>
 
                             </div>
                         </div>
