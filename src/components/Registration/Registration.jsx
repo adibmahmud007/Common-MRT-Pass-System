@@ -60,8 +60,8 @@ const navigate = useNavigate()
     return (
         <div className="reg-bg  min-h-screen  ">
             <div><Toaster/></div>
-            <div className="md:p-20  ">
-                <div className="p-5 md:backdrop-blur-sm md:shadow-sm md:shadow-slate-400  max-w-lg mx-auto rounded-xl ">
+            <div className="md:p-28">
+                <div className="p-5 md:backdrop-blur-sm md:shadow-sm md:shadow-slate-400 w-[550px] mx-auto rounded-xl ">
                     <div className="text-center mb-3 ">
                         <h2 className="text-3xl text-center font-bold mb-8 text-white ">Welcome to MRT Pass System</h2>
                         <img className="w-24 mx-auto mb-3" src={metro_img} alt="" />
@@ -87,8 +87,11 @@ const navigate = useNavigate()
                         
                         
 
-                        <p className="mt-2 text-white ">Have an account already? click here to <span className="text-green-700 font-bold underline"><Link to='/login'>Login</Link></span></p>
+                       
                     </form>
+                    <div className="text-center pt-2">
+                    <p className="mt-2 text-white ">Have an account already? click here to <span className="text-green-700 font-bold underline"><Link to='/login'>Login</Link></span></p>
+                    </div>
                 </div>
             </div>
         </div>

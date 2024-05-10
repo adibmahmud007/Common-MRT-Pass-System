@@ -4,6 +4,7 @@ import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Comp_1 = () => {
+
     const [FullName, setFullname] = useState('');
     const [phoneNumber, setPhonenumber] = useState('');
     const [address, setAddress] = useState('');
@@ -56,11 +57,11 @@ const Comp_1 = () => {
 
     return (
 
-        <div className="w-full bg-zinc-300 text-black">
+        <div className="w-full h-[715px] bg-zinc-300 text-black">
             <div className="text-center">
             <div><Toaster/></div>
-                <h1 className="text-3xl pt-4 font-bold">Profile Create</h1>
-                <section className="w-[600px] h-[450px] rounded-xl bg-white mx-auto mt-5">
+                <h1 className="text-3xl pt-4 font-bold">Profile Setup</h1>
+                <section className="w-[530px] h-[450px] rounded-xl bg-white mx-auto mt-5">
                     <div className="text-left pl-5 pt-5">
                         <div className="w-72 pt-5 pl-5">
                             <div className="relative w-full min-w-[400px] mt-6 ml-2 h-10">
@@ -105,7 +106,7 @@ const Comp_1 = () => {
                             </div>
                             <div className="px-6 py-4 pl-2">
                                 <button onClick={handleSubmit}
-                                 className="p-3 bg-green-500 rounded-xl hover:bg-green-700 text-sm font-semibold">Create Profile</button>
+                                 className="p-3 bg-green-500 rounded-xl hover:bg-green-700 text-sm font-semibold">Set Profile</button>
 
                             </div>
                         </div>

@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import user_profile from "../../assets/user_profile-3.png"
+import axios from "axios";
+import toast from "react-hot-toast";
+
 // import logo from "../../assets/logo.png"
 
 const Header = () => {
+    const navigate = useNavigate();
+    const handleLogout=()=>{
+        axios.post("http://localhost:8000/api/v1/logout",'',{ withCredentials: true })
+            .then(response => {
+                 toast.success('Successfully logout');
+                 console.log(response.data, 'from axios logout');
+                 navigate("/login")
+            })
+
+            .catch(error => {
+                //  toast.error(error.response.data.error.explanation)
+                console.error('Error fetching data:', error);
+            });
+    }
     return (
         <div className="navbar home-bg  text-white">
             <div className="navbar-start ">
@@ -15,13 +32,12 @@ const Header = () => {
                         <Link to='/services'><li><a>Services</a></li></Link>
                         <Link to='/profile'><li><a>Profile</a></li></Link>
                         <Link to="/card"><li><a>Card</a></li></Link>
-                        <li><a>About Us</a></li>
-                        <li><a>Contact</a></li>
+                        <li onClick={handleLogout}><a>logout</a></li>
+                        {/* <li><a>Contact</a></li> */}
                     </ul>
                 </div>
 
-                <a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2 md:pl-14 "><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a>
-                
+            <Link to='/home'><a className="btn btn-ghost text-2xl md:text-4xl font-bold md:mb-2 md:pl-14 "><h1 className="bg-gradient-to-r from-blue-600 via-violet-600 to-pink-600 inline-block text-transparent bg-clip-text play-bold">MRT System</h1></a></Link>                
 
             </div>
             <div className="navbar-center items-center hidden lg:flex pl-24 ">
@@ -30,7 +46,7 @@ const Header = () => {
                     <Link className="hover:text-zinc-400 pr-3" to='/services'><li><a>Services</a></li></Link>
                     <Link to='/profile'><li className="hover:text-zinc-400 pr-3"><a>Profile</a></li></Link>
                     <Link className="hover:text-zinc-400 pr-3" to="/card"><li><a>Card</a></li></Link>
-                    <li className="hover:text-zinc-400 pr-3"><a>About Us</a></li>
+                    <li onClick={handleLogout} className="hover:text-zinc-400 pr-3"><a>logout</a></li>
 
                 </ul>
             </div>

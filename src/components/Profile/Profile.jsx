@@ -6,6 +6,7 @@ import Comp_1 from "../ProfileComponents/Comp_1";
 import Comp_2 from "../ProfileComponents/Comp_2";
 import Comp_3 from "../ProfileComponents/Comp_3";
 import Comp_4 from "../ProfileComponents/Comp_4";
+import Comp_5 from "../ProfileComponents/Comp_5";
 // import Comp_1 from "../ProfileComponents/Comp_1";
 // import ButtonGroups from "../ProfileComponents/ButtonGroups";
 
@@ -24,6 +25,9 @@ const RenderComponent=({index})=>{
         case 3 : return <Comp_4></Comp_4>
             // eslint-disable-next-line no-unreachable
             break;
+        case 4 : return <Comp_5></Comp_5>
+            // eslint-disable-next-line no-unreachable
+            break;
     
         default:
             break;
@@ -33,7 +37,7 @@ const RenderComponent=({index})=>{
 
 const Profile = () => {
     const buttons = [
-        "Profile Create", "Profile Update", "Show Profile", "Delete Profile"
+        "Profile Setup", "Profile Update", "Show Profile", "Delete Account","Show Journey History"
     ]
     const [isSelected,setIsSelected]=useState(0);
     return (

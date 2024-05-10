@@ -79,7 +79,7 @@ const Card = () => {
             amount,
         }, { withCredentials: true })
             .then(response => {
-                toast.success('Card Recharge successful');
+                // toast.success('Card Recharge successful');
                 // setGenerate(true);
                 window.location.replace(response.data);
                 console.log(response.data, 'from axios card'); // This will log the response data
@@ -87,7 +87,7 @@ const Card = () => {
 
             .catch(error => {
                 // Handle error
-                toast.error('Card already generated')
+                // toast.error('Card already generated')
                 console.error('Error fetching data:', error);
             });
     }
@@ -131,12 +131,12 @@ const Card = () => {
 
     return (
         <div className="bg-zinc-900 ">
-            <div className="flex flex-col md:min-h-screen h-[650px]">
+            <div className="flex flex-col md:h-[600px] h-[650px]">
                 <div className="shadow-sm shadow-zinc-800">
                     <Header></Header>
                 </div>
-                <div className="fleX md:mx-[200px] mx-[75px] justify-between md:mt-24 mt-5 ">
-                    <div className="md:text-left text-center md:pt-10">
+                <div className="fleX md:mx-[180px] mx-[75px] justify-between md:mt-24 mt-5 ">
+                    <div className="md:text-left text-center md:pt-18 ">
                         <h1 className="text-3xl text-white font-semibold">Card Details</h1>
                         <div className="text-white md:pt-4">
                             <h1 className="pb-3 text-xl font-semibold">{username}</h1>

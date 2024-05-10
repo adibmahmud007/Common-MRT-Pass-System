@@ -4,11 +4,11 @@ import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Comp_2 = () => {
-    const [FullName, setFullname] = useState('');
-    const [phoneNumber, setPhonenumber] = useState('');
-    const [address, setAddress] = useState('');
-    const [dateOfBirth, setBirth] = useState('');
-    const [postCode, setPost] = useState('');
+    const [FullName, setFullname] = useState();
+    const [phoneNumber, setPhonenumber] = useState();
+    const [address, setAddress] = useState();
+    const [dateOfBirth, setBirth] = useState();
+    const [postCode, setPost] = useState();
 
     const handleNameChange = (e) => {
         const newfullname = e.target.value;
@@ -34,7 +34,7 @@ const Comp_2 = () => {
     }
 
     const handleSubmit=()=>{
-        axios.post("http://localhost:8000/api/v1/users/profile", {
+        axios.patch("http://localhost:8000/api/v1/users/profile/update", {
             FullName, phoneNumber, address, dateOfBirth, postCode
             },{withCredentials:true})
             .then((res) => {
@@ -50,17 +50,17 @@ const Comp_2 = () => {
     }
 
 
-    // console.log(fullname, phonenumber, address, Birth, Post);
+    console.log(FullName, phoneNumber, address, dateOfBirth, postCode);
 
 
 
     return (
 
-        <div className="w-full bg-zinc-300 text-black">
+        <div className="w-full h-[715px] bg-zinc-300 text-black">
             <div className="text-center">
             <div><Toaster/></div>
                 <h1 className="text-3xl pt-4 font-bold">Profile Update</h1>
-                <section className="w-[600px] h-[450px] rounded-xl bg-white mx-auto mt-5">
+                <section className="w-[530px] h-[450px] rounded-xl bg-white mx-auto mt-5">
                     <div className="text-left pl-5 pt-5">
                         <div className="w-72 pt-5 pl-5">
                             <div className="relative w-full min-w-[400px] mt-6 ml-2 h-10">

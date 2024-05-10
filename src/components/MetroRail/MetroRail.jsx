@@ -1,28 +1,75 @@
-import { useLoaderData } from "react-router-dom";
-import "../../App.css"
+import  { useState, useEffect } from "react";
+import axios from 'axios';
+import "../../App.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import { useState } from "react";
-const MetroRail = () => {
+import toast from "react-hot-toast";
 
-    const stations = useLoaderData();
-    const [selectedStation, setSelectedStation] = useState("Uttara-west");
-    const [selectDestination, setSelectDestination]=useState("Motijhil");
-    // const [selectPerson,setSelectPerson]=useState(0);
+const MetroRail = () => {
+    const [stations, setStations] = useState([]);
+    const [originStation, setOriginStation] = useState("Uttara-North");
+    const [destinationStation, setDestinationStation] = useState("Motijheel");
+    const [numOfPassenger, setNumOfPassenger] = useState();
+    const [fare, settotalCost] = useState();
+    const transportName='Dhaka-Metro';
+    const transportMedium='metro';
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/v1/stations/metro")
+            .then(res => {
+                setStations(res.data.data);
+                console.log(res.data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching card info:', error);
+            });
+    }, []); 
 
     const handleSelectPerson=e=>{
         const person=e.target.value;
+        setNumOfPassenger(person);
         console.log(person,'No of persons from radio');
     }
 
     const handleDestinationSelect=(stationName)=>{
-        setSelectDestination(stationName);
+        setDestinationStation(stationName);
     }
 
     const handleStationSelect = (stationName) => {
-        setSelectedStation(stationName);
+        setOriginStation(stationName);
       };
-    
+
+      
+    if(originStation!==undefined && destinationStation!==undefined && numOfPassenger!==undefined){
+        console.log(originStation,destinationStation,numOfPassenger);
+        axios.post("http://localhost:8000/api/v1/fare/calculate/metro",{
+            originStation,
+            destinationStation,
+            numOfPassenger
+        },{withCredentials:true})
+        .then(res => {
+            settotalCost(res.data.data)
+            console.log(res.data.data);
+        })
+        .catch(error => {
+            console.error('Error fetching fare:', error);
+        });
+     }
+
+     const handlePay = () => {
+
+        axios.post("http://localhost:8000/api/v1/fare/pay",{transportName,originStation,destinationStation,numOfPassenger,transportMedium,fare}, { withCredentials: true })
+            .then(response => {
+                 toast.success('Pay successful');
+                console.log(response.data, 'from axios pay'); // This will log the response data
+            })
+
+            .catch(error => {
+                toast.error(error.response.data.error.explanation)
+                console.error('Error fetching data:', error);
+            });
+    }
+
+
 
     return (
         <div className="metro_bg ">
@@ -36,7 +83,7 @@ const MetroRail = () => {
                         <div className="pl-5 md:pl-32 md:pt-5">
                             <p className="text-sm font-bold py-2">Origin</p>
                             <div className="flex justify-between w-[350px] md:w-[650px] items-center border-b-[1px] border-b-blue-50 hover:border-b-red-700">
-                                <p>{selectedStation}</p>
+                                <p>{originStation}</p>
                                 <details className="dropdown dropdown-top cursor-pointer dropdown-end">
                                     <summary className="m-1 ">Select Station</summary>
                                     <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44">
@@ -52,7 +99,7 @@ const MetroRail = () => {
                         <div className="pl-5 md:pl-32 pt-5 md:pt-8">
                         <p className="text-sm font-bold py-2">Destination</p>
                             <div className="flex justify-between w-[350px] md:w-[650px] items-center border-b-[1px] border-b-blue-50 hover:border-b-red-700 ">
-                                <p>{selectDestination}</p>
+                                <p>{destinationStation}</p>
                                 <details className="dropdown dropdown-top cursor-pointer dropdown-end">
                                     <summary className="m-1 ">Select Station</summary>
                                     <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44">
@@ -78,10 +125,10 @@ const MetroRail = () => {
                     </div>
                 </div>
                 <div className="pl-5 md:pl-32 pt-4 text-white text-sm font-bold ">
-                    <p>Price: {100} TK</p>
+                    <p>Price: {fare} TK</p>
                 </div>
                 <div className="pl-5 md:pl-32 pt-3 md:pt-6 text-white  text-center">
-                    <button className="Buy-button">Buy</button>
+                    <button onClick={handlePay} className="Buy-button">Buy</button>
                 </div>
             </div>
             <Footer></Footer>

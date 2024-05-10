@@ -1,28 +1,104 @@
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import origin from '../../assets/origin.png'
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import destination from "../../assets/destination.png"
 import exchange from "../../assets/destination-2.png"
+import axios from 'axios';
+import toast from "react-hot-toast";
+import  { useState, useEffect } from "react";
 
 const Bus = () => {
+    const [stations, setStations] = useState([]);
+    const [buses, setBuses] = useState([]);
+    const [originStation, setOriginStation] = useState("Mirpur-1");
+    const [destinationStation, setDestinationStation] = useState("Mirpur-10");
+    const [name, setBusName] = useState("");
+    const [numOfPassenger, setNumOfPassenger] = useState();
+    const [fare, settotalCost] = useState();
+    const transportName=name;
+    const transportMedium = stations.length > 0 ? stations[0].transport_medium : undefined;
 
-    const stations = useLoaderData();
-    // const [selectedStation, setSelectedStation] = useState("Uttara-west");
-    // const [selectDestination, setSelectDestination]=useState("Motijhil");
-
-    // const handleDestinationSelect=(stationName)=>{
-    //     setSelectDestination(stationName);
-    // }
-
-    // const handleStationSelect = (stationName) => {
-    //     setSelectedStation(stationName);
-    //   };
 
     const handleSelectPerson = e => {
         const person = e.target.value;
+        setNumOfPassenger(person);
         console.log(person, 'No of persons from radio');
     }
+    const handleDestinationSelect=(stationName)=>{
+        setDestinationStation(stationName);
+    }
+
+    const handleStationSelect = (stationName) => {
+        setOriginStation(stationName);
+      };
+    const handleBusNameSelect = (busName) => {
+        setBusName(busName);
+      };
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/v1/stations/bus")
+            .then(res => {
+                setStations(res.data.data);
+                console.log(res.data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching bus info:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const fetchBuses = async () => {
+            try {
+                const response = await axios.post("http://localhost:8000/api/v1/buses/info", {
+                    originStation,
+                    destinationStation
+                }, { withCredentials: true });
+                if (Array.isArray(response.data.data)) {
+                    setBuses(response.data.data);
+                }
+                console.log(response.data.data);
+            } catch (error) {
+                console.error('Error fetching airplane:', error);
+            }
+        };
+        fetchBuses();
+    }, [originStation, destinationStation]);
+
+
+        if(originStation!==undefined && destinationStation!==undefined && numOfPassenger!==undefined){
+            console.log(name,originStation,destinationStation,numOfPassenger);
+            axios.post("http://localhost:8000/api/v1/fare/calculate/bus",{
+                name,
+                originStation,
+                destinationStation,
+                numOfPassenger
+            },{withCredentials:true})
+            .then(res => {
+                settotalCost(res.data.data)
+                console.log(res.data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching fare:', error);
+            });
+         }
+
+         const handlePay = () => {
+
+            axios.post("http://localhost:8000/api/v1/fare/pay",{transportName,originStation,destinationStation,numOfPassenger,transportMedium,fare}, { withCredentials: true })
+                .then(response => {
+                     toast.success('Pay successful');
+                    console.log(response.data, 'from axios pay'); // This will log the response data
+                })
+    
+                .catch(error => {
+                     toast.error(error.response.data.error.explanation)
+                    console.error('Error fetching data:', error);
+                });
+        }
+    
+    
+
 
     return (
         <div className="bg-zinc-900 bus_bg">
@@ -41,14 +117,15 @@ const Bus = () => {
                                     <div className="w-10"><img src={origin} alt="" /></div>
                                 </div>
                                 <div className="">
+                                <p>{originStation}</p>
                                     <details className="dropdown dropdown-top cursor-pointer dropdown-start">
                                         <summary className="m-1 text-lg font-bold text-orange-500">Origin</summary>
                                         <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44 text-white">
-                                            {stations.map(station => (
-                                                <li key={station.name} >
-                                                    {station.name}
-                                                </li>
-                                            ))}
+                                        {stations.map(station => (
+                                            <li key={station.name} onClick={() => handleStationSelect(station.name)}>
+                                                {station.name}
+                                            </li>
+                                        ))}
                                         </ul>
                                     </details>
                                 </div>
@@ -64,14 +141,15 @@ const Bus = () => {
                                     <div className="w-10"><img src={destination} alt="" /></div>
                                 </div>
                                 <div className="">
+                                    <p>{destinationStation}</p>
                                     <details className="dropdown dropdown-top cursor-pointer dropdown-start">
                                         <summary className="m-1 text-lg font-bold text-orange-500">Destination</summary>
                                         <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44 text-white">
-                                            {stations.map(station => (
-                                                <li key={station.name} >
-                                                    {station.name}
-                                                </li>
-                                            ))}
+                                        {stations.map(station => (
+                                            <li key={station.name} onClick={() => handleDestinationSelect(station.name)}>
+                                                {station.name}
+                                            </li>
+                                        ))}
                                         </ul>
                                     </details>
                                 </div>
@@ -87,14 +165,15 @@ const Bus = () => {
                                     <div className="w-10"><img src={origin} alt="" /></div>
                                 </div>
                                 <div className="">
+                                    <p>{name}</p>
                                     <details className="dropdown dropdown-top cursor-pointer dropdown-start">
                                         <summary className="m-1 text-lg font-bold text-orange-500">Select Bus</summary>
                                         <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44 text-white">
-                                            {stations.map(station => (
-                                                <li key={station.name} >
-                                                    {station.name}
-                                                </li>
-                                            ))}
+                                        {buses.map(bus => (
+                                            <li key={bus.name} onClick={() => handleBusNameSelect(bus.name)}>
+                                                {bus.name}
+                                            </li>
+                                        ))}
                                         </ul>
                                     </details>
                                 </div>
@@ -115,10 +194,10 @@ const Bus = () => {
                         </div>
                     </div>
                     <div className="pl-12 translate-y-12 md:pl-32 pt-4 text-white text-sm font-bold ">
-                        <p>Price: {100} TK</p>
+                        <p>Price: {fare} TK</p>
                     </div>
                     <div className="  pt-10 translate-y-9 md:pt-6 text-white  text-center">
-                        <button className="Buy-button">Buy</button>
+                        <button onClick={handlePay} className="Buy-button">Buy</button>
                     </div>
                 </div>
             </div>

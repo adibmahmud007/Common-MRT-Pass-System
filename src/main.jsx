@@ -22,6 +22,7 @@ import Plane from './components/Plane/Plane';
 import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess';
 import PaymentFail from './components/PaymentFail/paymentFail';
 import Profile from './components/Profile/Profile';
+import About from './components/About/About';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>
+      },
+      {
+        path: "/about",
+        element: <About></About>
       }
 
 ]);
