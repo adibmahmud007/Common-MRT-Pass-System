@@ -75,6 +75,7 @@ const Login = () => {
 
                         </form>
                         <Link to='/'><p className="mt-3 pl-16 text-gray-200 md:text-slate-600">Dont have an account please <span className="underline text-green-600 font-bold">Register</span></p></Link>
+                        <Link to='/forget'><p className="mt-3 pl-16 text-gray-200 md:text-slate-600">Can not remember password?<span className="underline text-green-600 font-bold">Forget Password</span></p></Link>
                     </div>
                     <div className="login-bg md:w-full md:rounded-r-lg md:mx-auto md:ml-3 md:block hidden">
                         <h2 className="md:text-3xl text-black font-bold md:mt-44 pt-2 pl-2 md:text-center glow ">Log In To Get All <br />

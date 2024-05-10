@@ -23,10 +23,15 @@ import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess';
 import PaymentFail from './components/PaymentFail/paymentFail';
 import Profile from './components/Profile/Profile';
 import About from './components/About/About';
+import ForgetPass from './ForgetPass/ForgetPass';
 const router = createBrowserRouter([
       {
         path:'/',
         element: <Registration></Registration>
+      },
+      {
+        path:"/forget",
+        element:<ForgetPass></ForgetPass>
       },
       {
         path: "/home",
