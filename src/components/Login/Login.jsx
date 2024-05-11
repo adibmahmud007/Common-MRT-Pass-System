@@ -27,6 +27,9 @@ const Login = () => {
         axios.post("http://localhost:8000/api/v1/password/forget-password",{
             email
         },{withCredentials:true}) 
+        .then(res=>{
+            toast.success(res)
+        })
     }
 
     const handleSubmit = (e) => {
