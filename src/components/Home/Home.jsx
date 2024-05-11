@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import "../../App.css"
 import HomeBG from "../HomeBG/HomeBG";
 import Services from "../Services/Services";
+import Blog from "../Blog/Blog";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <HomeBG></HomeBG>
             </div>
             <Services></Services>
+            <Blog></Blog>
             <Footer></Footer>
         </div>
     );
