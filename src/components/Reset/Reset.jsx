@@ -27,7 +27,7 @@ const Reset = () => {
 
     return (
         <div>
-            <div>{Toaster}</div>
+            <div><Toaster /></div>
             <section className="bg-zinc-900 h-screen ">
                 <h1 className="text-4xl text-center font-bold text-white pb-4">Reset Password</h1>
                 <div className="w-[450px] h-[150px] bg-white rounded-xl pt-5 pl-5 mx-auto  ">

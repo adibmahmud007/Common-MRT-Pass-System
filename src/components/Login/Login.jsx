@@ -28,7 +28,7 @@ const Login = () => {
             email
         },{withCredentials:true}) 
         .then(res=>{
-            toast.success(res)
+            toast.success(res.data.message)
         })
     }
 
