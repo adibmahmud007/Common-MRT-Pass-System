@@ -44,6 +44,13 @@
   /* transform: translateY(200px); */
   /* box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.2); */
 }
+.profile_bg{
+  background-image: url('./assets/Services_pictures/profile_bg-2.jpg');
+  background-size: cover;
+  /* transform: translateX(-200px); */
+  /* background-repeat: repeat; */
+  /* box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7); */
+}
 .plane_bg{
   background-image: url('./assets/Services_pictures/plane2.jpg');
   background-size: cover;
@@ -108,7 +115,7 @@
   .Btn{
     padding:15px 20px  ;
     font-weight: bold;
-    background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+    background-color: black;
     color: white;
   }
   .Btn:hover{
@@ -119,7 +126,7 @@
     border-width: 1px;
     border-style: solid;
     font-weight: bold;
-    background-color: darkslategray;
+    background-image: linear-gradient(to right,rgb(56, 11, 203), rgb(239, 29, 124));
     color: white;
   }
   .Button:hover{
@@ -252,6 +259,13 @@
       /* transform: translateX(-200px); */
       /* background-repeat: repeat; */
       box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7);
+    }
+    .profile_bg{
+      background-image: url('./assets/Services_pictures/Bus.jpg');
+      background-size: cover;
+      /* transform: translateX(-200px); */
+      /* background-repeat: repeat; */
+      /* box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.7); */
     }
     .launch_bg{
       background-image: url('./assets/Services_pictures/launch-4.jpg');

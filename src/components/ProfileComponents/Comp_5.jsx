@@ -28,34 +28,34 @@ const Comp_5 = () => {
     }
     
     return (
-        <div className="w-full h-[715px] bg-zinc-300 text-black pt-4">
+        <div className="w-full h-[715px] profile_bg text-white pt-4 pl-10">
             <h1 className="text-3xl pb-4 text-center font-bold">Your Journey History</h1>
           <div className="max-h-[650px] overflow-y-auto">
-            <table className="border border-black">
-                <thead className="border border-black">
-                  <tr className="border border-black" >
-                    <th className="px-2 border border-black">Transport Name</th>
-                    <th className="px-2 border border-black">Source</th>
-                    <th className="px-2 border border-black">Destination</th>
-                    <th className="px-2 border border-black">Passengers</th>
-                    <th className="px-2 border border-black">Transport Medium</th>
-                    <th className="px-2 border border-black">Cabin Type</th>
-                    <th className="px-2 border border-black">Fare</th>
-                    <th className="px-2 border border-black">Payment Time</th>
+            <table className="border border-white">
+                <thead className="border border-white">
+                  <tr className="border border-white" >
+                    <th className="px-2 border border-white">Transport Name</th>
+                    <th className="px-2 border border-white">Source</th>
+                    <th className="px-2 border border-white">Destination</th>
+                    <th className="px-2 border border-white">Passengers</th>
+                    <th className="px-2 border border-white">Transport Medium</th>
+                    <th className="px-2 border border-white">Cabin Type</th>
+                    <th className="px-2 border border-white">Fare</th>
+                    <th className="px-2 border border-white">Payment Time</th>
                   </tr>
                 </thead>
-                <tbody className="border border-black">
+                <tbody className="border border-white">
                   {Array.isArray(journeys) && journeys.length > 0 ? (
                     journeys.map(journey => (
-                      <tr className="border border-black" key={journey.id}>
-                        <td className="px-2 border border-black">{journey.transportName}</td>
-                        <td className="px-2 border border-black">{journey.originStation}</td>
-                        <td className="px-2 border border-black">{journey.destinationStation}</td>
-                        <td className="px-2 border border-black">{journey.numOfPassenger}</td>
-                        <td className="px-2 border border-black">{journey.transportMedium}</td>
-                        <td className="px-2 border border-black">{journey.cabinType}</td>
-                        <td className="px-2 border border-black">{journey.fare}</td>
-                        <td className="px-2 border border-black">{journey.createdAt}</td>
+                      <tr className="border border-white" key={journey.id}>
+                        <td className="px-2 border border-white">{journey.transportName}</td>
+                        <td className="px-2 border border-white">{journey.originStation}</td>
+                        <td className="px-2 border border-white">{journey.destinationStation}</td>
+                        <td className="px-2 border border-white">{journey.numOfPassenger}</td>
+                        <td className="px-2 border border-white">{journey.transportMedium}</td>
+                        <td className="px-2 border border-white">{journey.cabinType}</td>
+                        <td className="px-2 border border-white">{journey.fare}</td>
+                        <td className="px-2 border border-white">{journey.createdAt}</td>
                       </tr>
                     ))
                   ) : (

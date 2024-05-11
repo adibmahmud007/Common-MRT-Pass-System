@@ -41,7 +41,7 @@ const Profile = () => {
     ]
     const [isSelected,setIsSelected]=useState(0);
     return (
-        <div className="bg-zinc-800 shadow-lg">
+        <div className="bg-black shadow-lg">
             <div className="flex flex-col h-screen">
                 <Header></Header>
                 <div className="flex text-xl">

@@ -19,13 +19,13 @@ const Comp_4 = () => {
     }
 
     return (
-        <div className="w-full h-[715px] bg-zinc-300 text-black">
+        <div className="w-full h-[715px] profile_bg text-white">
             <div><Toaster /></div>
             <h1 className="text-4xl pt-4 text-center font-bold">Delete User Account</h1>
             <div className="text-center translate-y-10">
                 <h1 className=" mt-14 pb-5 text-3xl font-bold">Click the button below to delete profile</h1>
                 <button onClick={handleDelete}
-                    className="px-5 py-3 bg-red-500 font-semibold text-lg rounded-xl ">Delete Account</button>
+                    className="px-5 py-3 bg-red-600 hover:bg-red-700 font-semibold text-lg rounded-xl ">Delete Account</button>
             </div>
         </div>
     );
