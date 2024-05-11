@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import img1 from '../../assets/images/img_1.jpg';
 import img2 from '../../assets/images/img_2.jpg';
