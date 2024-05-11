@@ -59,7 +59,7 @@ const Comp_2 = () => {
         <div className="w-full h-[715px] profile_bg text-white">
             <div className="text-center">
             <div><Toaster/></div>
-                <h1 className="text-3xl pt-4 font-bold">Profile Setup</h1>
+                <h1 className="text-3xl pt-4 font-bold">Profile Update</h1>
                 <section className="w-[530px] h-[450px] rounded-xl backdrop-blur-sm mx-auto mt-5">
                     <div className="text-left pl-5 pt-5">
                         <div className="w-72 pt-5 pl-5">
