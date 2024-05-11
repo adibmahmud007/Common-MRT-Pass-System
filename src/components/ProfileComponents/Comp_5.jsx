@@ -30,7 +30,7 @@ const Comp_5 = () => {
     return (
         <div className="w-full h-[715px] profile_bg text-white pt-4 pl-10">
             <h1 className="text-3xl pb-4 text-center font-bold">Your Journey History</h1>
-          <div className="max-h-[650px] overflow-y-auto">
+          <div className="max-h-[650px] backdrop-blur-lg overflow-y-hidden">
             <table className="border border-white">
                 <thead className="border border-white">
                   <tr className="border border-white" >
