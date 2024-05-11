@@ -24,6 +24,7 @@ import PaymentFail from './components/PaymentFail/paymentFail';
 import Profile from './components/Profile/Profile';
 import About from './components/About/About';
 import ForgetPass from './components/ForgetPass/ForgetPass';
+import Reset from './components/Reset/Reset';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path:"/recharge",
         element:<Recharge></Recharge>,
 
+      },
+      {
+        path:"/reset_password/:username/:token",
+        element: <Reset></Reset>
       },
       {
         path:"/card",
