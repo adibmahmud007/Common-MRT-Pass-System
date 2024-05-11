@@ -30,6 +30,9 @@ const Login = () => {
         .then(res=>{
             toast.success(res.data.message)
         })
+        .catch((error)=>{
+            toast.error(error.response.data.error.explanation);
+        })
     }
 
     const handleSubmit = (e) => {
