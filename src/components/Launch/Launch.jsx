@@ -138,7 +138,7 @@ const Launch = () => {
         <div className="launch_bg ">
             <div className="flex flex-col px-1 py-2 min-h-screen">
                 <Header></Header>
-                <section className="md:w-[650px] md:h-[450px] mx-auto p-2 bg-black opacity-75  md:translate-y-14 rounded-md">
+                <section className="md:w-[650px] md:h-[470px] mx-auto p-2 bg-black opacity-75  md:translate-y-14 rounded-md">
                     <div className="text-white px-5 py-3">
                         <h1 className="md:text-4xl text-3xl font-bold pb-2 font-serif">Get Your Trip By Launch</h1>
                         <p className="text-sm">Set your origin and destination to travel</p>
