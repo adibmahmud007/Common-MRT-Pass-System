@@ -148,6 +148,11 @@
     color: black;
     transition: .8s;
   }
+  .Wave{
+    position:absolute;
+    bottom: -750px;
+    /* left: 0; */
+  }
   /* @keyframes glow {
     from {
       text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #19029e, 0 0 5px #0073e6, 0 0 6px #09306e, 0 0 7px #180669, 0 0 10px #0e1492;
