@@ -16,6 +16,7 @@ const Services = () => {
     }, [])
     return (
         <div id="services" className="md:h-[700px] min-h-screen bg-black text-white text-center"  >
+            
             <p className="text-4xl  md:text-center grad_text play-bold font-bold py-5" data-aos="flip-up">Services We Provide</p>
 
             <div className="md:pt-10 px-2 md:grid md:grid-cols-2 gap-5">

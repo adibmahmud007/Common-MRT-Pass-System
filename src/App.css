@@ -21,7 +21,7 @@
   background-image: url('./assets/home_bg.jpg');
   background-size: cover;
   /* background-repeat: repeat; */
-  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.85);
+  box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.75);
   /* overflow-x: hidden !important; */
 }
 
@@ -151,6 +151,14 @@
   .Wave{
     position:absolute;
     bottom: -980px;
+    /* height: 150px; */
+    /* width: auto; */
+    /* left: 0; */
+    /* z-index: 50; */
+  }
+  .Wave2{
+    position:absolute;
+    bottom: -80px;
     /* height: 150px; */
     /* width: auto; */
     /* left: 0; */
