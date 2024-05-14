@@ -15,14 +15,14 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Plane = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     // <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-    const departureDate=selectedDate.toLocaleDateString()
+    const departureTime=selectedDate.toLocaleDateString()
 
     // const [adcount, setCount] = useState(0);
     // const [chcount, setchCount] = useState(0);
     const [stations, setStations] = useState([]);
     const [airplanes, setAirplanes] = useState([]);
     // const [departureTimes, setTimes] = useState([]);
-    const [departureTime, setTime] = useState();
+    // const [departureTime, setTime] = useState();
     const [departureAirport, setOriginStation] = useState("Hazrat Shahjalal International Airport(DA)");
     const [arrivalAirport, setDestinationStation] = useState("Osmani International Airport(SYL)");
     const [name, setAirplaneName] = useState("");
@@ -207,7 +207,7 @@ const Plane = () => {
 
                         </div>
                         <div className="md:pt-0   px-3 mb-2 text-left border border-black">
-                            <h3 className="text-black text-sm font-semibold">Departing:{departureDate}</h3>
+                            <h3 className="text-black text-sm font-semibold">Departing:{departureTime}</h3>
                             <details className="dropdown cursor-pointer pb-2 md:pb-0">
 
                                 <summary className=" bg-white w-[300px] md:w-[250px] text-black rounded-sm">Select time</summary>
