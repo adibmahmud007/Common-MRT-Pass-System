@@ -4,6 +4,8 @@ import origin from '../../assets/origin.png'
 // import { useLoaderData } from "react-router-dom";
 import destination from "../../assets/destination.png"
 import exchange from "../../assets/destination-2.png"
+import bus from "../../assets/bus-2.png"
+import seat from "../../assets/seat.png"
 import axios from 'axios';
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
@@ -117,7 +119,7 @@ const Bus = () => {
 
     return (
         <div className="bg-zinc-900 bus_bg">
-            <div className="md:flex md:flex-col h-[800px] md:h-[700px]">
+            <div className="md:flex md:flex-col h-[920px] md:h-[700px]">
                 <div className="">
                     <Header></Header>
                     <div className="text-white">
@@ -126,7 +128,7 @@ const Bus = () => {
                         <p className="p-5 md:text-lg text-sm md:pl-32 pt-5">Select Origin and destination to travel in Bus</p>
                     </div>
                     <section className="md:flex  gap-10">
-                        <div className="w-[220px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-6 translate-x-20">
+                        <div className="w-[250px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-6 translate-x-20">
                             <div className="flex gap-10 items-center">
                                 <div>
                                     <div className="w-10"><img src={origin} alt="" /></div>
@@ -177,12 +179,12 @@ const Bus = () => {
                         <div className="w-[250px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-12 translate-x-20">
                             <div className="flex gap-10 items-center">
                                 <div>
-                                    <div className="w-10"><img src={origin} alt="" /></div>
+                                    <div className="w-10"><img src={bus} alt="" /></div>
                                 </div>
                                 <div className="">
                                     <p>{name}</p>
                                     <details className="dropdown dropdown-top cursor-pointer dropdown-start">
-                                        <summary className="m-1 text-lg font-bold text-orange-500">Select Bus</summary>
+                                        <summary className="m-1 text-lg font-bold text-orange-500 pt-4">Select Bus</summary>
                                         <ul className=" shadow menu dropdown-content z-[5] backdrop-blur-lg  rounded-box md:w-52 w-44 text-white">
                                             {buses.map(bus => (
                                                 <li key={bus.name} onClick={() => handleBusNameSelect(bus.name)}>
@@ -195,17 +197,17 @@ const Bus = () => {
                             </div>
 
                         </div>
-                        <div className="w-[250px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-12 translate-x-20">
+                        <div className="w-[250px] p-5 hover:opacity-100 transition-colors opacity-70  bg-white rounded-lg md:translate-y-16 md:translate-x-32 translate-y-16 translate-x-20">
                             <div className="flex gap-10 items-center">
                                 <div>
-                                    <div className="w-10"><img src={origin} alt="" /></div>
+                                    <div className="w-10"><img src={seat} alt="" /></div>
                                 </div>
                                 <div className="">
                                     <p>{selectedSeats}</p>
                                     {/* <details className=""> */}
                                        
                                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                                        <button className="m-1 text-lg font-bold text-orange-500" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
+                                        <button className="m-1 pt-4  text-lg font-bold text-orange-500" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
                                         <dialog id="my_modal_4" className="modal">
                                             <div className="modal-box w-11/12 max-w-5xl">
                                                 <section>

@@ -166,7 +166,7 @@ const Plane = () => {
         <div className="plane_bg ">
             <div className="flex flex-col px-1 py-2 min-h-screen">
                 <Header></Header>
-                <section className="md:w-[700px] md:h-[480px] mx-auto p-2 bg-white opacity-75  md:translate-y-14 rounded-md">
+                <section className="md:w-[700px] md:mt-0 mt-3 w-[450px] md:h-[550px] mx-auto p-2 bg-white opacity-75  md:translate-y-14 rounded-md">
                     <div className="text-black px-5 py-2">
                         <h1 className="md:text-4xl text-3xl font-bold pb-2 font-serif">Select Your preferable Flight</h1>
                         {/* <p className="text-sm">Set your origin and destination to travel</p> */}
@@ -191,7 +191,7 @@ const Plane = () => {
                             </div>
                             <img className="md:translate-x-0 translate-x-64 w-10 h-14 pt-3" src={doublegreen} alt="" />
                             <div className="border border-black p-2">
-                                <p className="text-sm pl-2 font-semibold">Flying From: {arrivalAirport}</p>
+                                <p className="text-sm pl-2 font-semibold">Flying To: {arrivalAirport}</p>
                                 {/* <p>Enter the type of cabin</p> */}
                                 <details className="dropdown cursor-pointer pb-2 md:pb-0">
 
@@ -207,7 +207,7 @@ const Plane = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="text-white px-5 py-1 md:flex gap-20">
+                    <section className="text-white px-5 py-1 md:flex gap-24">
                         <div className="md:pt-0 pt-3 pb-3 mb-3 px-3 text-left border border-black">
                             <h3 className="text-black text-sm font-semibold">Airplane:{name}</h3>
                             <details className="dropdown cursor-pointer pb-2 md:pb-0">
@@ -223,7 +223,7 @@ const Plane = () => {
                             </details>
 
                         </div>
-                        <div className="md:pt-0   px-3 mb-2 text-left border border-black">
+                        <div className="md:pt-0 px-3 mb-2 text-left border border-black">
                             <h3 className="text-black text-sm font-semibold">Departing:{departureTime}</h3>
                             <details className="dropdown cursor-pointer pb-2 md:pb-0">
 
@@ -252,21 +252,12 @@ const Plane = () => {
                             </details>
                         </div>
                     </section>
-                    <section className="md:flex gap-12">
+                    <section className="md:flex md:gap-12">
                         <div className="md:pt-0 pt-4">
 
-                            <section className="flex gap-x-36">
-                                <div className="text-black  pl-5">
-                                    <p className="text-sm font-bold md:py-2">Persons:</p>
-                                    <div className="pt-3">
-                                        <label className="radio border-none" htmlFor="1"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="1" value='1' />1</label>
-                                        <label className="pl-6 border-none radio" htmlFor="2"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="2" value='2' />2</label>
-                                        <label className="pl-6 border-none radio" htmlFor="3"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="3" value='3' />3</label>
-                                        <label className="pl-6 border-none radio" htmlFor="4"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="4" value='4' />4</label>
-                                        <label className="pl-6 border-none radio" htmlFor="5"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="5" value='5' />5</label>
-                                    </div>
-                                </div>
-                                <div className="md:pt-0 ml-2 pt-3 pb-3 mb-3 px-3 text-left border border-black w-[280px]">
+                            <section className="md:flex md:flex-col md:gap-x-36">
+                                <div className="text-black  pl-3">
+                                <div className="md:pt-0 ml-2 pt-3 pb-3 mb-3 px-3 text-left border border-black  md:w-[280px] w-[390px]">
                                     <h3 className="text-black text-sm font-semibold">Selected Seat:{selectedSeats.join(', ')}</h3>
                                     {/* You can open the modal using document.getElementById('ID').showModal() method */}
                                     <button className=" font-bold cursor-pointer" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
@@ -312,6 +303,16 @@ const Plane = () => {
                                     </dialog>
 
                                 </div>
+                                    <p className="text-sm font-bold md:py-2">Persons:</p>
+                                    <div className="pt-3">
+                                        <label className="radio border-none" htmlFor="1"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="1" value='1' />1</label>
+                                        <label className="pl-6 border-none radio" htmlFor="2"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="2" value='2' />2</label>
+                                        <label className="pl-6 border-none radio" htmlFor="3"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="3" value='3' />3</label>
+                                        <label className="pl-6 border-none radio" htmlFor="4"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="4" value='4' />4</label>
+                                        <label className="pl-6 border-none radio" htmlFor="5"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="5" value='5' />5</label>
+                                    </div>
+                                </div>
+                                
                             </section>
                             <div className="pl-4 pt-2">
                                 <p>Price:{fare}</p>

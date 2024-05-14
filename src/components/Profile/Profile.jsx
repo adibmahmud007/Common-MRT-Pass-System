@@ -42,9 +42,9 @@ const Profile = () => {
     const [isSelected,setIsSelected]=useState(0);
     return (
         <div className="bg-black shadow-lg">
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col h-[1050px]">
                 <Header></Header>
-                <div className="flex text-xl">
+                <div className="md:flex text-xl">
                     <ButtonGroup buttons={buttons} isSelected={isSelected} setIsSelected={setIsSelected}></ButtonGroup>
                     <RenderComponent index={isSelected}></RenderComponent>
                 </div>

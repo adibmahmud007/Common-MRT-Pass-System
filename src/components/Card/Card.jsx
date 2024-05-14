@@ -135,19 +135,19 @@ const Card = () => {
                 <div className="shadow-sm shadow-zinc-800">
                     <Header></Header>
                 </div>
-                <div className="fleX md:mx-[180px] mx-[75px] justify-between md:mt-24 mt-5 ">
+                <div className="fleX md:mx-[180px] mx-[30px] justify-between md:mt-24 mt-5 ">
                     <div className="md:text-left text-center md:pt-18 ">
                         <h1 className="text-3xl text-white font-semibold">Card Details</h1>
                         <div className="text-white md:pt-4">
                             <h1 className="pb-3 text-xl font-semibold">{username}</h1>
                             <div className="md:flex gap-10 md:gap-36">
-                                <div className="pt-3 flex gap-7">
+                                <div className="md:pt-3 flex gap-7">
                                     <div className="md:pl-0 pl-5">
-                                        <p className="text-sm font-semibold">Balance</p>
+                                        <p className="text-sm font-semibold translate-x-40 md:translate-x-0">Balance</p>
                                         <h1 className="text-2xl font-bold">
 
 
-                                            <div className="flex text-white w-6">
+                                            <div className="flex text-white translate-x-[165px] md:translate-x-0 pb-2 w-6">
 
                                                 <div>{balance}</div>
                                             </div></h1>
@@ -158,14 +158,14 @@ const Card = () => {
                             </div>
 
                         </div>
-                        <div className="flex gap-8">
-                            <div className="md:mt-4 mt-2">
-                                <button onClick={handleDetails} className="btn pl-2">Show Details</button>
+                        <div className="flex md:gap-8 gap-2">
+                            <div className="md:mt-4 ">
+                                <button onClick={handleDetails} className="btn md:pl-2">Show Details</button>
                             </div>
-                            <div className="mt-4">
+                            <div className="md:mt-4">
                                 <button onClick={handleGenerate} className="btn">Generate Card</button>
                             </div>
-                            <section className="pt-4">
+                            <section className="md:pt-4">
                                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                                 <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Recharge Card</button>
                                 <dialog id="my_modal_1" className="modal">
@@ -193,7 +193,7 @@ const Card = () => {
                                     </div>
                                 </dialog>
                             </section>
-                            <section className="pt-4">
+                            <section className="md:pt-4">
                                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                                 <button className="btn " onClick={() => document.getElementById('my_modal_2').showModal()}>Recharge History</button>
                                 <dialog id="my_modal_2" className="modal">
@@ -224,7 +224,7 @@ const Card = () => {
                         </div>
                     </div>
                     <div className="w-[300px] h-[300px]">
-                        <div className="circle">
+                        <div className="circle md:ml-0 ml-[100px]">
                             <div className="shadow-sm shadow-slate-200 rounded-xl backdrop-blur-xl w-[350px] h-[200px] translate-y-5 translate-x-[-60px]">
                                 <div className="flex justify-between mx-2 items-center">
                                     <h1 className="text-slate-300 pl-5 pt-3 font-semibold text-xl">MRT Pass</h1>

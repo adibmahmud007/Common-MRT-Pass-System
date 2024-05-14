@@ -20,7 +20,7 @@ const Comp_3 = () => {
     return (
         <div className="w-full h-[715px] profile_bg text-black pt-3">
             <h1 className="text-3xl text-white text-center font-bold">Show Profile Details</h1>
-            <section className="w-[550px] h-[350px] backdrop-blur-sm text-white mx-auto mt-11 rounded-xl">
+            <section className="md:w-[550px] h-[350px] backdrop-blur-sm text-white mx-auto mt-11 rounded-xl">
                 <div className="text-xl px-16 pt-4 flex gap-4 items-center">
                     <h1 className="font-semibold text-2xl">Full Name </h1>
                     <p className="border-[2px] rounded-lg border-white py-1 px-2">{userInfo.FullName}</p>

@@ -25,7 +25,7 @@ const Blog = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setSlideIndex((prevIndex) => (prevIndex + 1) % 16);
-        }, 3000); 
+        }, 3000);
 
         return () => clearInterval(interval);
     }, []);
@@ -50,31 +50,32 @@ const Blog = () => {
         { src: airplaneImg2, alt: 'Slide 8', type: 'airplane', content: "Discovering Bangladesh's domestic airline sector unveils a narrative of evolution and connectivity. Since its inception in the 1970s with Biman Bangladesh Airlines, the industry has flourished, with carriers like Novoair, US-Bangla Airlines, and Regent Airways joining the ranks. Facilitating travel between bustling metropolises and remote corners, these airlines play a pivotal role in uniting the nation. However, challenges loom, from infrastructure limitations to pandemic-induced setbacks. Yet, amidst these hurdles, opportunities emerge for innovation and collaboration. Modernizing infrastructure, embracing technology, and enhancing safety standards are imperative for sustained growth. As Bangladesh propels toward a future defined by progress, its domestic airlines stand as symbols of resilience, carrying the aspirations of millions skyward. In this ever-changing landscape, the promise of tomorrow fuels the industry's journey, charting a course where the skies know no bounds and the spirit of exploration soars." },
         { src: airplaneImg3, alt: 'Slide 8', type: 'airplane', content: "Discovering Bangladesh's domestic airline sector unveils a narrative of evolution and connectivity. Since its inception in the 1970s with Biman Bangladesh Airlines, the industry has flourished, with carriers like Novoair, US-Bangla Airlines, and Regent Airways joining the ranks. Facilitating travel between bustling metropolises and remote corners, these airlines play a pivotal role in uniting the nation. However, challenges loom, from infrastructure limitations to pandemic-induced setbacks. Yet, amidst these hurdles, opportunities emerge for innovation and collaboration. Modernizing infrastructure, embracing technology, and enhancing safety standards are imperative for sustained growth. As Bangladesh propels toward a future defined by progress, its domestic airlines stand as symbols of resilience, carrying the aspirations of millions skyward. In this ever-changing landscape, the promise of tomorrow fuels the industry's journey, charting a course where the skies know no bounds and the spirit of exploration soars." },
         { src: airplaneImg4, alt: 'Slide 8', type: 'airplane', content: "Discovering Bangladesh's domestic airline sector unveils a narrative of evolution and connectivity. Since its inception in the 1970s with Biman Bangladesh Airlines, the industry has flourished, with carriers like Novoair, US-Bangla Airlines, and Regent Airways joining the ranks. Facilitating travel between bustling metropolises and remote corners, these airlines play a pivotal role in uniting the nation. However, challenges loom, from infrastructure limitations to pandemic-induced setbacks. Yet, amidst these hurdles, opportunities emerge for innovation and collaboration. Modernizing infrastructure, embracing technology, and enhancing safety standards are imperative for sustained growth. As Bangladesh propels toward a future defined by progress, its domestic airlines stand as symbols of resilience, carrying the aspirations of millions skyward. In this ever-changing landscape, the promise of tomorrow fuels the industry's journey, charting a course where the skies know no bounds and the spirit of exploration soars." },
-        
-        
+
+
     ];
 
     return (
-        <div  className="bg-zinc-900 min-h-screen flex flex-col justify-center items-center">
+        <div className="bg-zinc-900 min-h-screen flex flex-col justify-center items-center">
             <svg className='Wave  ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000" fillOpacity="1" d="M0,320L30,309.3C60,299,120,277,180,245.3C240,213,300,171,360,165.3C420,160,480,192,540,213.3C600,235,660,245,720,250.7C780,256,840,256,900,240C960,224,1020,192,1080,181.3C1140,171,1200,181,1260,208C1320,235,1380,277,1410,298.7L1440,320L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
-            
-            
-            <h1 data-aos="flip-up" className="text-4xl text-white font-bold text-center Z_index py-16">Blog Section</h1>
+
+
+            <h1 data-aos="flip-up" className="text-4xl text-white font-bold text-center Z_index md:py-16 py-2">Blog Section</h1>
             {slides.map((slide, index) => (
                 <section
                     key={index}
-                    className={`flex py-16 mx-10 mb-9 w-full ${index === slideIndex ? '' : 'hidden'}`}
+                    className={`flex flex-col lg:flex-row py-16 mx-10 mb-9 w-full ${index === slideIndex ? '' : 'hidden'}`}
                 >
-                    <div data-aos="fade-up" className="w-3/5 px-24 mt-16">
-                        <h1  className="text-3xl font-semibold text-white pb-3">{slide.type === 'bus' ? 'Bus' : slide.type === 'train' ? 'Metro Rail' : slide.type === 'airplane' ? 'Domestic Airplane' : 'Launch'}</h1>
+                    <div data-aos="fade-up" className="lg:w-3/5 px-6 lg:px-24 mt-16">
+                        <h1 className="text-3xl font-semibold text-white pb-3">
+                            {slide.type === 'bus' ? 'Bus' : slide.type === 'train' ? 'Metro Rail' : slide.type === 'airplane' ? 'Domestic Airplane' : 'Launch'}
+                        </h1>
                         <p className="text-white text-justify">
                             {slide.content}
                         </p>
                     </div>
-                    <div  className="w-2/5 h-[500px]">
-                        <div data-aos="fade-down" className="relative h-[520px] w-[500px] max-w-screen-lg mx-auto">
+                    <div className="lg:w-2/5 px-2 py-2">
+                        <div data-aos="fade-down" className="relative w-full h-[300px] lg:h-[520px] max-w-screen-lg mx-auto">
                             <img
-                            
                                 src={slide.src}
                                 alt={slide.alt}
                                 className="object-cover rounded-2xl w-full h-full"
@@ -83,6 +84,7 @@ const Blog = () => {
                     </div>
                 </section>
             ))}
+
         </div>
     );
 };
