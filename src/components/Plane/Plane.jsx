@@ -8,8 +8,16 @@ import doublegreen from "../../assets/dourbe-arrow-green.png"
 import { useState,useEffect } from "react";
 import toast from "react-hot-toast";
 import axios from 'axios';
+// import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 // import DatePicker from "react-date-picker";
 const Plane = () => {
+    const [startDate, setStartDate] = useState(new Date());
+  
+    // <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+
 
     // const [adcount, setCount] = useState(0);
     // const [chcount, setchCount] = useState(0);
@@ -205,7 +213,7 @@ const Plane = () => {
                             <details className="dropdown cursor-pointer pb-2 md:pb-0">
 
                                     <summary className=" bg-white w-[300px] md:w-[250px] text-black p-2 rounded-sm">Select time</summary>
-                                    <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                    {/* <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     {departureTimes.map(time => {
                                             const departureDateTime = new Date(time);
                                             const formattedDateTime = `${departureDateTime.getFullYear()}-${String(departureDateTime.getMonth() + 1).padStart(2, '0')}-${String(departureDateTime.getDate()).padStart(2, '0')} ${String(departureDateTime.getHours()).padStart(2, '0')}:${String(departureDateTime.getMinutes()).padStart(2, '0')}:${String(departureDateTime.getSeconds()).padStart(2, '0')}`;
@@ -215,7 +223,9 @@ const Plane = () => {
                                                 </li>
                                             );
                                         })}
-                                    </ul>
+                                    </ul> */}
+                                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+
                                 </details>
                         </div>
                     </section>
