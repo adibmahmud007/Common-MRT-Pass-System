@@ -15,7 +15,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Plane = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     // <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-    const departureTime=selectedDate.toLocaleDateString()
+    const departureTime = selectedDate.toLocaleDateString()
 
     // const [adcount, setCount] = useState(0);
     // const [chcount, setchCount] = useState(0);
@@ -55,9 +55,9 @@ const Plane = () => {
     const handleAirplaneNameSelect = (Name) => {
         setAirplaneName(Name);
     };
-    const handleTimeSelect = (Time) => {
-        setTime(Time);
-    };
+    // const handleTimeSelect = (Time) => {
+    //     setTime(Time);
+    // };
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/v1/stations/airplane")
@@ -99,7 +99,7 @@ const Plane = () => {
                 }, { withCredentials: true });
 
                 if (Array.isArray(response.data.data)) {
-                    setTimes(response.data.data);
+                    // setTimes(response.data.data);
                 }
                 console.log(response.data.data);
             } catch (error) {
@@ -142,6 +142,23 @@ const Plane = () => {
                 console.error('Error fetching data:', error);
             });
     }
+
+
+    const [selectedSeats, setSelectedSeats] = useState([]);
+
+    const handleSeatClick = (seat) => {
+        const index = selectedSeats.indexOf(seat);
+        if (index === -1) {
+            setSelectedSeats([...selectedSeats, seat]);
+        } else {
+            setSelectedSeats(selectedSeats.filter((s) => s !== seat));
+        }
+    };
+
+    // Example: Generate seats for six rows
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F','G','I'];
+    const seatsPerRow = 7;
+    const gapBetweenRows = 20;
 
     return (
 
@@ -225,7 +242,7 @@ const Plane = () => {
                                 <div className="border-black">
                                     <h1>Select a Date</h1>
                                     <DatePicker
-                                    className="text-black border-black"
+                                        className="text-black border-black"
                                         selected={selectedDate}
                                         onChange={(date) => setSelectedDate(date)}
                                         showTimeSelect
@@ -238,16 +255,64 @@ const Plane = () => {
                     <section className="md:flex gap-12">
                         <div className="md:pt-0 pt-4">
 
-                            <div className="text-black  pl-5">
-                                <p className="text-sm font-bold md:py-2">Persons:</p>
-                                <div className="pt-3">
-                                    <label className="radio border-none" htmlFor="1"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="1" value='1' />1</label>
-                                    <label className="pl-6 border-none radio" htmlFor="2"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="2" value='2' />2</label>
-                                    <label className="pl-6 border-none radio" htmlFor="3"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="3" value='3' />3</label>
-                                    <label className="pl-6 border-none radio" htmlFor="4"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="4" value='4' />4</label>
-                                    <label className="pl-6 border-none radio" htmlFor="5"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="5" value='5' />5</label>
+                            <section className="flex gap-x-36">
+                                <div className="text-black  pl-5">
+                                    <p className="text-sm font-bold md:py-2">Persons:</p>
+                                    <div className="pt-3">
+                                        <label className="radio border-none" htmlFor="1"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="1" value='1' />1</label>
+                                        <label className="pl-6 border-none radio" htmlFor="2"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="2" value='2' />2</label>
+                                        <label className="pl-6 border-none radio" htmlFor="3"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="3" value='3' />3</label>
+                                        <label className="pl-6 border-none radio" htmlFor="4"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="4" value='4' />4</label>
+                                        <label className="pl-6 border-none radio" htmlFor="5"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="5" value='5' />5</label>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="md:pt-0 ml-2 pt-3 pb-3 mb-3 px-3 text-left border border-black w-[280px]">
+                                    <h3 className="text-black text-sm font-semibold">Selected Seat:{selectedSeats.join(', ')}</h3>
+                                    {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                                    <button className=" font-bold cursor-pointer" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
+                                    <dialog id="my_modal_4" className="modal">
+                                        <div className="modal-box w-11/12 max-w-5xl">
+                                            <div>
+                                                <h1 className="text-2xl font-semibold mb-4">Select your seat</h1>
+                                                <div className="flex flex-col items-center">
+                                                    {rows.map((row, rowIndex) => (
+                                                        <div key={row} className="flex mb-2" style={{ marginBottom: rowIndex < rows.length - 1 ? `${gapBetweenRows}px` : 0 }}>
+                                                            {Array.from({ length: seatsPerRow }, (_, index) => {
+                                                                const seatNumber = index + 1;
+                                                                const seatId = `${row}${seatNumber}`;
+                                                                const isSelected = selectedSeats.includes(seatId);
+                                                                const seatStyles = isSelected
+                                                                    ? 'bg-blue-500 text-white'
+                                                                    : 'bg-gray-200';
+                                                                return (
+                                                                    <div
+                                                                        key={seatId}
+                                                                        className={`w-8 h-8 border rounded-full flex items-center justify-center mx-1 cursor-pointer ${seatStyles}`}
+                                                                        onClick={() => handleSeatClick(seatId)}
+                                                                    >
+                                                                        {seatId}
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <div className="mt-4">
+                                                    <p className="text-sm">Selected seats: {selectedSeats.join(', ')}</p>
+                                                </div>
+                                                
+                                            </div>
+                                            <div className="modal-action">
+                                                <form method="dialog">
+                                                    {/* if there is a button, it will close the modal */}
+                                                    <button className="btn">Close</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </dialog>
+
+                                </div>
+                            </section>
                             <div className="pl-4 pt-2">
                                 <p>Price:{fare}</p>
                             </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import Bus from '../Bus/Bus';
 
 function SeatSelection() {
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -45,6 +46,7 @@ function SeatSelection() {
       <div className="mt-4">
         <p className="text-sm">Selected seats: {selectedSeats}</p>
       </div>
+      {/* <Bus selectedSeats={selectedSeats} /> */}
     </div>
   );
 }
