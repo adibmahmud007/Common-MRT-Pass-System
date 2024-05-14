@@ -25,6 +25,7 @@ import Profile from './components/Profile/Profile';
 import About from './components/About/About';
 import ForgetPass from './components/ForgetPass/ForgetPass';
 import Reset from './components/Reset/Reset';
+import BusSit from './components/BusSit/BusSit';
 const router = createBrowserRouter([
       {
         path:'/',
@@ -81,7 +82,12 @@ const router = createBrowserRouter([
       {
         path: '/plane',
         element: <Plane></Plane>
+      },
+      {
+        path:'/bussit',
+        element: <BusSit></BusSit>
       }
+
       ,
       {
         path:'/card/recharge/success/:tran_Id',

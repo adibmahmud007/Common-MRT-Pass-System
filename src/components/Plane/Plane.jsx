@@ -228,6 +228,7 @@ const Plane = () => {
                                     className="text-black border-black"
                                         selected={selectedDate}
                                         onChange={(date) => setSelectedDate(date)}
+                                        showTimeSelect
                                         dateFormat="MM/dd/yyyy"
                                     />
                                 </div>

@@ -7,6 +7,7 @@ import exchange from "../../assets/destination-2.png"
 import axios from 'axios';
 import toast from "react-hot-toast";
 import  { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Bus = () => {
     const [stations, setStations] = useState([]);
@@ -195,6 +196,9 @@ const Bus = () => {
                     </div>
                     <div className="pl-12 translate-y-12 md:pl-32 pt-4 text-white text-sm font-bold ">
                         <p>Price: {fare} TK</p>
+                    </div>
+                    <div>
+                        <Link to='/bussit'><button className="btn">Select Seat</button></Link>
                     </div>
                     <div className="  pt-10 translate-y-9 md:pt-6 text-white  text-center">
                         <button onClick={handlePay} className="Buy-button">Buy</button>
