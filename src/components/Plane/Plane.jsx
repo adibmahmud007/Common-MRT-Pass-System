@@ -9,20 +9,19 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import axios from 'axios';
 // import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 // import DatePicker from "react-date-picker";
 const Plane = () => {
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date());
     // <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-
+    const departureDate=selectedDate.toLocaleDateString()
 
     // const [adcount, setCount] = useState(0);
     // const [chcount, setchCount] = useState(0);
     const [stations, setStations] = useState([]);
     const [airplanes, setAirplanes] = useState([]);
-    const [departureTimes, setTimes] = useState([]);
+    // const [departureTimes, setTimes] = useState([]);
     const [departureTime, setTime] = useState();
     const [departureAirport, setOriginStation] = useState("Hazrat Shahjalal International Airport(DA)");
     const [arrivalAirport, setDestinationStation] = useState("Osmani International Airport(SYL)");
@@ -207,11 +206,11 @@ const Plane = () => {
                             </details>
 
                         </div>
-                        <div className="md:pt-0 pt-3 pb-3 px-3 mb-2 text-left border border-black">
-                            <h3 className="text-black text-sm font-semibold">Departing:{departureTime}</h3>
+                        <div className="md:pt-0   px-3 mb-2 text-left border border-black">
+                            <h3 className="text-black text-sm font-semibold">Departing:{departureDate}</h3>
                             <details className="dropdown cursor-pointer pb-2 md:pb-0">
 
-                                <summary className=" bg-white w-[300px] md:w-[250px] text-black p-2 rounded-sm">Select time</summary>
+                                <summary className=" bg-white w-[300px] md:w-[250px] text-black rounded-sm">Select time</summary>
                                 {/* <ul className="p-2 text-black shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     {departureTimes.map(time => {
                                             const departureDateTime = new Date(time);
@@ -223,9 +222,10 @@ const Plane = () => {
                                             );
                                         })}
                                     </ul> */}
-                                <div>
+                                <div className="border-black">
                                     <h1>Select a Date</h1>
                                     <DatePicker
+                                    className="text-black border-black"
                                         selected={selectedDate}
                                         onChange={(date) => setSelectedDate(date)}
                                         dateFormat="MM/dd/yyyy"
