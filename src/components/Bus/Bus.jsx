@@ -17,17 +17,21 @@ const Bus = () => {
     const [originStation, setOriginStation] = useState("Mirpur-1");
     const [destinationStation, setDestinationStation] = useState("Mirpur-10");
     const [name, setBusName] = useState("");
-    const [numOfPassenger, setNumOfPassenger] = useState();
+    // const [numOfPassenger, setNumOfPassenger] = useState();
     const [fare, settotalCost] = useState();
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const x = selectedSeats.length;
+    let numOfPassenger = x;
+    console.log(x);
     const transportName = name;
     const transportMedium = stations.length > 0 ? stations[0].transport_medium : undefined;
 
 
-    const handleSelectPerson = e => {
-        const person = e.target.value;
-        setNumOfPassenger(person);
-        console.log(person, 'No of persons from radio');
-    }
+    // const handleSelectPerson = e => {
+    //     const person = e.target.value;
+    //     setNumOfPassenger(person);
+    //     console.log(person, 'No of persons from radio');
+    // }
     const handleDestinationSelect = (stationName) => {
         setDestinationStation(stationName);
     }
@@ -100,20 +104,25 @@ const Bus = () => {
             });
     }
 
-    const [selectedSeats, setSelectedSeats] = useState([]);
 
-  const handleSeatClick = (seat) => {
-    const index = selectedSeats.indexOf(seat);
-    if (index === -1) {
-      setSelectedSeats([...selectedSeats, seat]);
-    } else {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seat));
-    }
-  };
+    const handleSeatClick = (seat) => {
+        // Check if selectedSeats length is less than 6
+        if (selectedSeats.length < 6) {
+            const index = selectedSeats.indexOf(seat);
+            if (index === -1) {
+                setSelectedSeats([...selectedSeats, seat]);
+            } else {
+                setSelectedSeats(selectedSeats.filter((s) => s !== seat));
+            }
+        } else {
+            // Show a message or perform an action indicating that only 6 tickets can be selected
+            toast.error("You can select a maximum of 6 tickets.");
+        }
+    };
 
-  // Example: Generate seats for three rows
-  const rows = ['A', 'B', 'C','D','E','F','G','H'];
-  const seatsPerRow = 4;
+    // Example: Generate seats for three rows
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const seatsPerRow = 4;
 
 
 
@@ -202,72 +211,54 @@ const Bus = () => {
                                 <div>
                                     <div className="w-10"><img src={seat} alt="" /></div>
                                 </div>
-                                <div className="">
-                                    <p>{selectedSeats}</p>
-                                    {/* <details className=""> */}
-                                       
-                                        {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                                        <button className="m-1 pt-4  text-lg font-bold text-orange-500" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
-                                        <dialog id="my_modal_4" className="modal">
-                                            <div className="modal-box w-11/12 max-w-5xl">
-                                                <section>
-                                                    <div className="container mx-auto mt-8">
-                                                        <h1 className="text-2xl font-semibold mb-4">Select your seat</h1>
-                                                        <div className="flex flex-col items-center">
-                                                            {rows.map((row) => (
-                                                                <div key={row} className="flex mb-4">
-                                                                    {Array.from({ length: seatsPerRow }, (_, index) => {
-                                                                        const seatNumber = index + 1;
-                                                                        const seatId = `${row}${seatNumber}`;
-                                                                        const isSelected = selectedSeats.includes(seatId);
-                                                                        const seatStyles = isSelected
-                                                                            ? 'bg-blue-500 text-white'
-                                                                            : 'bg-gray-200';
-                                                                        return (
-                                                                            <div
-                                                                                key={seatId}
-                                                                                className={`w-10 h-10 border rounded-full flex items-center justify-center mx-2 cursor-pointer ${seatStyles}`}
-                                                                                onClick={() => handleSeatClick(seatId)}
-                                                                            >
-                                                                                {seatId}
-                                                                            </div>
-                                                                        );
-                                                                    })}
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                        <div className="mt-4">
-                                                            <p className="text-sm">Selected seats: {selectedSeats}</p>
-                                                        </div>
-                                                        {/* <Bus selectedSeats={selectedSeats} /> */}
+                                <div className="w-[200px]">
+                                    <p>{selectedSeats.join(', ')}</p>
+                                    <button className="m-1 pt-4  text-lg font-bold text-orange-500" onClick={() => document.getElementById('my_modal_4').showModal()}>Select Seat</button>
+                                    <dialog id="my_modal_4" className="modal">
+                                        <div className="modal-box w-11/12 max-w-5xl">
+                                            <section>
+                                                <div className="container mx-auto mt-8">
+                                                    <h1 className="text-2xl font-semibold mb-4">Select your seat</h1>
+                                                    <div className="flex flex-col items-center">
+                                                        {rows.map((row) => (
+                                                            <div key={row} className="flex mb-4">
+                                                                {Array.from({ length: seatsPerRow }, (_, index) => {
+                                                                    const seatNumber = index + 1;
+                                                                    const seatId = `${row}${seatNumber}`;
+                                                                    const isSelected = selectedSeats.includes(seatId);
+                                                                    const seatStyles = isSelected
+                                                                        ? 'bg-blue-500 text-white'
+                                                                        : 'bg-gray-200';
+                                                                    return (
+                                                                        <div
+                                                                            key={seatId}
+                                                                            className={`w-10 h-10 border rounded-full flex items-center justify-center mx-2 cursor-pointer ${seatStyles}`}
+                                                                            onClick={() => handleSeatClick(seatId)}
+                                                                        >
+                                                                            {seatId}
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        ))}
                                                     </div>
-                                                </section>
-                                                <div className="modal-action">
-                                                    <form method="dialog">
-                                                        {/* if there is a button, it will close the modal */}
-                                                        <button className="btn">Close</button>
-                                                    </form>
+                                                    <div className="mt-4">
+                                                        <p className="text-sm">Selected seats: {selectedSeats}</p>
+                                                    </div>
                                                 </div>
+                                            </section>
+                                            <div className="modal-action">
+                                                <form method="dialog">
+                                                    <button className="btn">Close</button>
+                                                </form>
                                             </div>
-                                        </dialog>
-                                    {/* </details> */}
+                                        </div>
+                                    </dialog>
                                 </div>
                             </div>
 
                         </div>
                     </section>
-                    <div>
-                        <div className="pl-12 md:pl-32 pt-8 text-white translate-y-10">
-                            <p className="text-sm font-bold md:py-2">Persons:</p>
-                            <div className="pt-3">
-                                <label className="radio" htmlFor="1"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="1" value='1' />1</label>
-                                <label className="pl-6 radio" htmlFor="2"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="2" value='2' />2</label>
-                                <label className="pl-6 radio" htmlFor="3"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="3" value='3' />3</label>
-                                <label className="pl-6 radio" htmlFor="4"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="4" value='4' />4</label>
-                                <label className="pl-6 radio" htmlFor="5"><input onChange={handleSelectPerson} type="radio" name="radio-1" id="5" value='5' />5</label>
-                            </div>
-                        </div>
-                    </div>
                     <div className="pl-12 translate-y-12 md:pl-32 pt-4 text-white text-sm font-bold ">
                         <p>Price: {fare} TK</p>
                     </div>
